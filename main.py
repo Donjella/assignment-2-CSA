@@ -1,3 +1,5 @@
+from functions.student_functions import add_student
+
 def create_main_menu():
     print("Welcome to the Childcare Management App\n")
     print("What would you like to manage?")
@@ -48,12 +50,11 @@ while choice != "4":  # Main menu loop, "4" is exit
 
     if choice == "1":  # Student menu
         student_choice = ""
-        while student_choice != "4":  # Loop for the student sub-menu
+        while student_choice != "5":  # Loop for the student sub-menu; "5" goes back to main menu
             student_choice = create_student_menu()
-
             if student_choice == "1":
                 print("Add Student")
-                # Add logic to add a student
+                add_student()
             elif student_choice == "2":
                 print("Delete Student")
                 # Add logic to delete a student
@@ -61,6 +62,9 @@ while choice != "4":  # Main menu loop, "4" is exit
                 print("Update Student")
                 # Add logic to update a student
             elif student_choice == "4":
+                print("List students")
+                # Add logic to list students
+            elif student_choice == "5":
                 print("Returning to Main Menu")
             else:
                 print("Invalid choice. Please try again.")
@@ -69,3 +73,42 @@ while choice != "4":  # Main menu loop, "4" is exit
         staff_choice = ""
         while staff_choice != "4":  # Loop for the staff sub-menu
             staff_choice = create_staff_menu()
+            if staff_choice == "1":
+                print("Add Staff")
+                # Add logic to add staff
+            elif staff_choice == "2":
+                print("Delete Staff")
+                # Add logic to delete staff
+            elif staff_choice == "3":
+                print("Update Staff")
+                # Add logic to update staff
+            elif staff_choice == "4":
+                print("Returning to Main Menu")
+            else:
+                print("Invalid choice. Please try again.")
+
+    elif choice == "3":  # Kitchen menu
+        kitchen_choice = ""
+        while kitchen_choice != "4":  # Loop for the kitchen sub-menu
+            kitchen_choice = create_kitchen_menu()
+            if kitchen_choice == "1":
+                print("Add Menu for the Day")
+                # Add logic to add menu
+            elif kitchen_choice == "2":
+                print("Delete Menu for the Day")
+                # Add logic to delete menu
+            elif kitchen_choice == "3":
+                print("Update Menu for the Day")
+                # Add logic to update menu
+            elif kitchen_choice == "4":
+                print("Returning to Main Menu")
+            else:
+                print("Invalid choice. Please try again.")
+
+    elif choice == "4":  # Exit option
+        print("Exiting the application. Goodbye!")
+        break  # Exits the main loop
+
+    else:
+        print("Invalid choice. Please try again.")
+

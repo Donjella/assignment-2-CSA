@@ -1,12 +1,18 @@
+from datetime import datetime
+
 class Person:
     def __init__(self, name, birthday, contact):
         self.name = name
-        self.birthday = birthday  # Store as a string "YYYY-MM-DD"
+        self.birthday = birthday
         self.contact = contact
 
     def calculate_age(self):
-        from datetime import datetime
+        """Calculate age in years, including fractions of months."""
         birth_date = datetime.strptime(self.birthday, "%Y-%m-%d")
         today = datetime.today()
-        age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
-        return age
+        age_in_days = (today - birth_date).days
+        age_in_years = age_in_days / 365.25  # Convert days to years, including fractions
+        return age_in_years
+    
+    def __str__(self):
+        return f"Name: {self.name}, Birthday: {self.birthday}, Contact: {self.contact}"
