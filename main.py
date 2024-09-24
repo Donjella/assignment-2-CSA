@@ -1,5 +1,14 @@
 from functions.student_functions import add_student
-from functions.classroom_functions import list_students_by_classroom
+from functions.classroom_functions import list_students_by_classroom, delete_student
+from classes.classrooms import students, Classroom
+
+students = [] 
+
+classrooms = [
+    Classroom("Babies Room (0-2 years)", 0, 2),
+    Classroom("Toddlers Room (2-3 years)", 2, 3),
+    Classroom("Kindergarten Room (3-5 years)", 3, 5)
+]
 
 def create_main_menu():
     print("Welcome to the Childcare Management App\n")
@@ -55,15 +64,15 @@ while choice != "4":  # Main menu loop, "4" is exit
             student_choice = create_student_menu()
             if student_choice == "1":
                 print("Add Student")
-                add_student()
+                add_student(students, classrooms)
             elif student_choice == "2":
                 print("Delete Student")
-                # Add logic to delete a student
+                delete_student(students, classrooms)
             elif student_choice == "3":
                 print("Update Student")
                 # Add logic to update a student
             elif student_choice == "4":
-                list_students_by_classroom()  # List students by classroom
+                list_students_by_classroom(classrooms)  # List students by classroom
             elif student_choice == "5":
                 print("Returning to Main Menu")
             else:

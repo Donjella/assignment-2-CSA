@@ -1,9 +1,8 @@
-from functions.classroom_functions import classrooms  # Import the classrooms list
-from classes.students import Student
 from functions.classroom_functions import assign_student
+from classes.students import Student
 from datetime import datetime
 
-def add_student():
+def add_student(students, classrooms):
     # Validate first name (fname) and last name (lname)
     while True:
         fname = input("Enter student's first name: ")
@@ -36,6 +35,8 @@ def add_student():
     student = Student(fname, lname, birthday, contact)
 
     # Assign student to the correct classroom based on age
-    for classroom in classrooms:
-        if assign_student(classroom, student):
-            break
+    assign_student(classrooms, student)  # Pass the entire classrooms list and the student
+
+    # Add student to the global students list
+    students.append(student)
+   
