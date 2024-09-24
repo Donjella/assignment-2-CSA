@@ -1,4 +1,5 @@
 from functions.student_functions import add_student
+from functions.classroom_functions import list_students_by_classroom
 
 def create_main_menu():
     print("Welcome to the Childcare Management App\n")
@@ -50,7 +51,7 @@ while choice != "4":  # Main menu loop, "4" is exit
 
     if choice == "1":  # Student menu
         student_choice = ""
-        while student_choice != "5":  # Loop for the student sub-menu; "5" goes back to main menu
+        while student_choice != "5":  # Loop for the student sub-menu
             student_choice = create_student_menu()
             if student_choice == "1":
                 print("Add Student")
@@ -62,8 +63,7 @@ while choice != "4":  # Main menu loop, "4" is exit
                 print("Update Student")
                 # Add logic to update a student
             elif student_choice == "4":
-                print("List students")
-                # Add logic to list students
+                list_students_by_classroom()  # List students by classroom
             elif student_choice == "5":
                 print("Returning to Main Menu")
             else:

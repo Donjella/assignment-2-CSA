@@ -1,11 +1,17 @@
 from datetime import datetime
 
 class Person:
-    def __init__(self, name, birthday, contact):
-        self.name = name
+    def __init__(self, fname, lname, birthday, contact):
+        self.fname = fname
+        self.lname = lname
         self.birthday = birthday
         self.contact = contact
-
+        
+    @property
+    def full_name(self):
+        """Return the full name with proper capitalization."""
+        return f"{self.fname.capitalize()} {self.lname.capitalize()}"
+    
     def calculate_age(self):
         """Calculate age in years, including fractions of months."""
         birth_date = datetime.strptime(self.birthday, "%Y-%m-%d")
@@ -15,4 +21,4 @@ class Person:
         return age_in_years
     
     def __str__(self):
-        return f"Name: {self.name}, Birthday: {self.birthday}, Contact: {self.contact}"
+        return f"Name: {self.fname}{self.lname}, Birthday: {self.birthday}, Contact: {self.contact}"

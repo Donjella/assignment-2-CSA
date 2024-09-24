@@ -11,6 +11,9 @@ class Classroom:
     def get_name(self):
         return self.name
 
+# Global list of students
+students = []
+
 # Initialize the classrooms
 babies_classroom = Classroom("Babies Room (0-2 years)", 0, 2)
 toddlers_classroom = Classroom("Toddlers Room(2-3 years)", 2, 3)
