@@ -31,12 +31,34 @@ def add_student(students, classrooms):
         except ValueError:
             print("Invalid date format or date out of range. Please enter valid date in the format YYYY-MM-DD.")
 
-    # Create a new student
-    student = Student(fname, lname, birthday, contact)
+    # Initialize an empty list for allergies
+    allergies = []
+
+    while True:
+        has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
+        if has_allergy in ['yes', 'no']:
+            break  # Valid input, exit loop
+        else:
+            print("Please enter 'yes' or 'no'.")
+
+    if has_allergy == 'yes':
+        while True:
+            # Get the first allergy
+            allergy = input("Enter the allergy: ").strip().capitalize()
+            allergies.append(allergy)
+
+            # Ask if there are more allergies
+            more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
+
+            if more_allergies != 'yes':
+                break  # Exit the loop if there are no more allergies
+
+    # Create a new student 
+    student = Student(fname, lname, birthday, contact, allergies)
 
     # Assign student to the correct classroom based on age
-    assign_student(classrooms, student)  # Pass the entire classrooms list and the student
+    assign_student(classrooms, student)
 
     # Add student to the global students list
     students.append(student)
-   
+    print(f"DEBUG: {student.full_name} (ID: {student.student_id}) added to global students list.")

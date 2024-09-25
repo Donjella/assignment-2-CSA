@@ -28,6 +28,6 @@ class Kitchen:
             print(f"\nMenu for {day}:")
             for meal_type, dishes in meals.items():
                 if dishes:
-                    print(f"  {meal_type.title()}: {', '.join(dishes)}")
+                    print(f"{meal_type.title()}: {', '.join(dishes)}")
                 else:
-                    print(f"  {meal_type.title()}: No dishes set.")
+                    print(f"{meal_type.title()}: No dishes set.")

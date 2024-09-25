@@ -15,3 +15,15 @@ def add_menu_for_day(kitchen):
 def list_menu_for_day(kitchen):
     """Prompt the user to list the menu for a specific day."""
     kitchen.list_menu()
+
+def list_students_with_allergies(students):
+    """List all students with allergies."""
+    students_with_allergies = [student for student in students if student.allergies]
+    
+    if not students_with_allergies:
+        print("No students with allergies.\n")
+    else:
+        print("\nStudents with allergies:")
+        for student in students_with_allergies:
+            allergies = ', '.join(student.allergies)
+            print(f"{student.full_name} (ID: {student.student_id}) has the following allergies: {allergies}\n")
