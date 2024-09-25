@@ -35,14 +35,15 @@ def load_students(students, classrooms):
                 student.student_id = student_dict['student_id']  # Restore the student ID
                 students.append(student)
                 
-                # Assign the student to the correct classroom based on age
-                assign_student(classrooms, student)
+                # Assign the student to the correct classroom based on age, using silent=True to suppress messages
+                assign_student(classrooms, student, silent=True) # change silent to true to prevent print student details on startup
 
-        print("Student data loaded and assigned to classrooms successfully.")
+        # print("Student data loaded and assigned to classrooms successfully.")
     except FileNotFoundError:
         print("No previous student data found. Starting fresh.")
     except Exception as e:
         print(f"An error occurred while loading students: {e}")
+
 
 # Start of kitchen file functions
 
@@ -53,3 +54,11 @@ def save_menu(kitchen):
     print("Menu saved successfully.")
 
 
+def load_menu(kitchen):
+    """Load the kitchen menu from a JSON file."""
+    try:
+        with open('data/kitchen.json', 'r') as file:
+            kitchen.menu = json.load(file)
+        # print("Menu loaded successfully.")
+    except FileNotFoundError:
+        print("No saved menu found. Starting with an empty menu.")

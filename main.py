@@ -3,7 +3,7 @@ from functions.classroom_functions import list_students_by_classroom, delete_stu
 from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_day, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
-from functions.file_functions import save_students, load_students, save_menu 
+from functions.file_functions import save_students, load_students, save_menu , load_menu
 
 # Global list for students
 students = []
@@ -18,11 +18,12 @@ classrooms = [
 # Load students from the saved students.json file
 load_students(students, classrooms)
 
+
 # Initialize the kitchen
 kitchen = Kitchen()
 
 # Load the kitchen menu from the saved kitchen.json file
-
+load_menu(kitchen)
 
 def create_main_menu():
     print("Welcome to the Childcare Management App\n")
@@ -74,7 +75,8 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif student_choice == "3":
                 list_students_by_classroom(classrooms)  # List students by classroom
             elif student_choice == "4":
-                print("Returning to Main Menu")
+                print("Save changes and return to Main Menu")
+                save_students(students)  # Call save_students while exiting
             else:
                 print("Invalid choice. Please try again.")
 
@@ -91,15 +93,14 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif kitchen_choice == "4":
                 list_students_with_allergies(students)  # List students with allergies
             elif kitchen_choice == "5":
-                print("Returning to Main Menu")
+                print("Save changes and return to Main Menu")
+                save_menu(kitchen)  # Call save_menu to save the kitchen data before exiting
                 break  # Break the kitchen menu loop to return to the main menu
             else:
                 print("Invalid choice. Please try again.")
 
     elif choice == "3":  # Exit option
-        print("\nSaving students and kitchen data, then exiting the application. Goodbye!\n")
-        save_students(students)  # Call save_students before exiting
-        save_menu(kitchen)  # Call save_menu to save the kitchen data before exiting
+        print("\nExiting the application. Goodbye!\n")
         break  # Exits the main loop
 
     else:

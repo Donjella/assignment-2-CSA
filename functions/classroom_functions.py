@@ -1,7 +1,7 @@
 # classroom_functions.py
 from classes.classrooms import classrooms, students
 
-def assign_student(classrooms, student):
+def assign_student(classrooms, student, silent=False):
     """Try to assign a student to a valid classroom based on age."""
     age = student.calculate_age()
     assigned = False  # Track if the student is assigned to a classroom
@@ -11,12 +11,15 @@ def assign_student(classrooms, student):
         if classroom.is_valid_for_age(age):
             classroom.students.append(student)  # Add the student to the classroom's student list
             student.assign_classroom(classroom)  # Assign the classroom to the student
-            print(f"{student.full_name} (Student ID: {student.student_id}) is {age:.2f} years old and is assigned to {classroom.name}.")
+            
+            # Only print the details if silent is False
+            if not silent:
+                print(f"{student.full_name} (Student ID: {student.student_id}) is {age:.2f} years old and is assigned to {classroom.name}.")
             assigned = True
             break  # Exit the loop once the student is assigned
 
     # If the student couldn't be assigned to any classroom
-    if not assigned:
+    if not assigned and not silent:
         print(f"{student.full_name}, {age:.2f} years old cannot be added to any classroom due to age restriction.")
 
 
