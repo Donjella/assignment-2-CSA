@@ -3,7 +3,7 @@ from functions.classroom_functions import list_students_by_classroom, delete_stu
 from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_day, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
-from functions.file_functions import save_students
+from functions.file_functions import save_students, load_students
 # Global list for students
 students = []
 
@@ -13,6 +13,9 @@ classrooms = [
     Classroom("Toddlers Room (2-3 years)", 2, 3),
     Classroom("Kindergarten Room (3-5 years)", 3, 5)
 ]
+
+# Load students from the saved students.JSON file
+load_students(students, classrooms)
 
 # Initialize the kitchen
 kitchen = Kitchen()
