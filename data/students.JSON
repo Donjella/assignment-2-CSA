@@ -8,5 +8,13 @@
         "allergies": [
             "Peanuts"
         ]
+    },
+    {
+        "student_id": 35,
+        "fname": "Brendon",
+        "lname": "Ang",
+        "birthday": "2020-10-12",
+        "contact": "022002",
+        "allergies": []
     }
 ]
