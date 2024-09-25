@@ -7,8 +7,6 @@ class Kitchen:
             "Wednesday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
             "Thursday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
             "Friday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-            "Saturday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-            "Sunday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
         }
 
     def add_menu(self, day, meal_type, dish):
@@ -31,3 +29,11 @@ class Kitchen:
                     print(f"{meal_type.title()}: {', '.join(dishes)}")
                 else:
                     print(f"{meal_type.title()}: No dishes set.")
+
+    def delete_menu(self, day):
+        """Delete the menu for the given day by resetting it."""
+        if day in self.menu:
+            self.menu[day] = {"breakfast": "", "lunch": "", "afternoon tea": ""}
+            print(f"Menu for {day} has been deleted.")
+        else:
+            print(f"Invalid day: {day}. Please enter a valid day of the week.")

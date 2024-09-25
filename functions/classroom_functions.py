@@ -11,7 +11,7 @@ def assign_student(classrooms, student):
         if classroom.is_valid_for_age(age):
             classroom.students.append(student)  # Add the student to the classroom's student list
             student.assign_classroom(classroom)  # Assign the classroom to the student
-            print(f"{student.full_name} (student id: {student.student_id}) is {age:.2f} years old and is assigned to {classroom.name}.")
+            print(f"{student.full_name} (Student ID: {student.student_id}) is {age:.2f} years old and is assigned to {classroom.name}.")
             assigned = True
             break  # Exit the loop once the student is assigned
 

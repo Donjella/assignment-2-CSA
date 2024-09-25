@@ -26,4 +26,9 @@ def list_students_with_allergies(students):
         print("\nStudents with allergies:")
         for student in students_with_allergies:
             allergies = ', '.join(student.allergies)
-            print(f"{student.full_name} (ID: {student.student_id}) has the following allergies: {allergies}\n")
+            print(f"{student.full_name} (Student ID: {student.student_id}) has the following allergies: {allergies}\n")
+
+def delete_menu_for_day(kitchen):
+    """Prompt the user to delete the menu for a specific day."""
+    day = input("Enter the day of the week: ").capitalize()
+    kitchen.delete_menu(day)

@@ -61,4 +61,4 @@ def add_student(students, classrooms):
 
     # Add student to the global students list
     students.append(student)
-    print(f"DEBUG: {student.full_name} (ID: {student.student_id}) added to global students list.")
+    
