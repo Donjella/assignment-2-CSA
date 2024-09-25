@@ -44,3 +44,12 @@ def load_students(students, classrooms):
     except Exception as e:
         print(f"An error occurred while loading students: {e}")
 
+# Start of kitchen file functions
+
+def save_menu(kitchen):
+    """Save the kitchen menu to a JSON file."""
+    with open('data/kitchen.json', 'w') as file:
+        json.dump(kitchen.menu, file, indent=4)
+    print("Menu saved successfully.")
+
+

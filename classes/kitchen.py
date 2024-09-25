@@ -1,39 +1,45 @@
 class Kitchen:
     def __init__(self):
-        # Initialize a dictionary to hold the menu for each day of the week
-        self.menu = {
-            "Monday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-            "Tuesday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-            "Wednesday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-            "Thursday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-            "Friday": {"Breakfast": [], "Lunch": [], "Afternoon Tea": []},
-        }
+        # Initialize a dictionary to hold the menu for each week and each day of the week
+        self.menu = {}
 
-    def add_menu(self, day, meal_type, dish):
-        """Add a dish to the specified meal type for the given day."""
-        if day in self.menu:
-            if meal_type in self.menu[day]:
-                self.menu[day][meal_type].append(dish)
-                print(f"{dish} has been added to {meal_type} for {day}.")
-            else:
-                print(f"Invalid meal type: {meal_type}. Please enter 'breakfast', 'lunch', or 'afternoon_tea'.")
-        else:
-            print(f"Invalid day: {day}. Please enter a valid day of the week.")
+    def add_menu(self, week, day, breakfast, lunch, afternoon_tea):
+        """Add or update the menu for breakfast, lunch, and afternoon tea for a given day and week."""
+        # Ensure the week number is in the menu dictionary
+        if week not in self.menu:
+            self.menu[week] = {
+                "Monday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+                "Tuesday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+                "Wednesday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+                "Thursday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+                "Friday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+                "Saturday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+                "Sunday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
+            }
+
+        # Set the dish for each meal (breakfast, lunch, and afternoon tea)
+        self.menu[week][day]["Breakfast"] = breakfast
+        self.menu[week][day]["Lunch"] = lunch
+        self.menu[week][day]["Afternoon Tea"] = afternoon_tea
+
+        print(f"Menu for {day} in Week {week} has been updated.\n")
 
     def list_menu(self):
-        """List the menu for every day of the week."""
-        for day, meals in self.menu.items():
-            print(f"\nMenu for {day}:")
-            for meal_type, dishes in meals.items():
-                if dishes:
-                    print(f"{meal_type.title()}: {', '.join(dishes)}")
-                else:
-                    print(f"{meal_type.title()}: No dishes set.")
+        """List the menu for every week and day."""
+        for week, days in self.menu.items():
+            print(f"\n--- Menu for Week {week} ---")
+            for day, meals in days.items():
+                print(f"\nMenu for {day}:")
+                for meal_type, dish in meals.items():
+                    if dish:
+                        print(f"  {meal_type}: {dish}")
+                    else:
+                        print(f"  {meal_type}: No dishes set.")
 
-    def delete_menu(self, day):
-        """Delete the menu for the given day by resetting it."""
-        if day in self.menu:
-            self.menu[day] = {"breakfast": "", "lunch": "", "afternoon tea": ""}
-            print(f"Menu for {day} has been deleted.")
+    def delete_menu(self, week, day):
+        """Delete the menu for a specific day in a week."""
+        if week in self.menu and day in self.menu[week]:
+            self.menu[week][day] = {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
+            print(f"Menu for {day} in Week {week} has been deleted.")
         else:
-            print(f"Invalid day: {day}. Please enter a valid day of the week.")
+            print(f"Invalid day or week: {day} in Week {week}. Please enter a valid day and week.")
