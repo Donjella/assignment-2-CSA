@@ -3,7 +3,7 @@ from functions.classroom_functions import list_students_by_classroom, delete_stu
 from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_day, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
-
+from functions.file_functions import save_students
 # Global list for students
 students = []
 
@@ -90,7 +90,8 @@ while choice != "3":  # Main menu loop, "3" is exit
                 print("Invalid choice. Please try again.")
 
     elif choice == "3":  # Exit option
-        print("\nExiting the application. Goodbye!\n")
+        print("\nSaving students and exiting the application. Goodbye!\n")
+        save_students(students)  # Call save_students before exiting
         break  # Exits the main loop
 
     else:
