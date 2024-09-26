@@ -1,13 +1,14 @@
 from datetime import datetime
 
+# In person.py
 class Person:
-    def __init__(self, fname, lname, birthday, contact_number, contact_email, allergies=None):
+    def __init__(self, fname, lname, birthday=None, contact_number=None, contact_email=None, allergies=None):
         self.fname = fname
         self.lname = lname
         self.birthday = birthday
         self.contact_number = contact_number
         self.contact_email = contact_email
-        self.allergies = allergies if allergies is not None else []  # Default to an empty list if no allergies provided
+        self.allergies = allergies if allergies is not None else []
 
     @property
     def full_name(self):

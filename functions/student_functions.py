@@ -15,7 +15,7 @@ def add_student(students, classrooms):
 
    # Validate emergency contact number (should contain only digits)
     while True:
-        contact_number = input("Enter student's emergency contact number (numbers only): ")
+        contact_number = input("Enter student's parent/guardian contact number (numbers only): ")
         if contact_number.isdigit():
             break  # Valid input, exit loop
         else:
@@ -23,7 +23,7 @@ def add_student(students, classrooms):
 
     # Validate emergency contact email
     while True:
-        contact_email = input("Enter student's emergency contact email: ")
+        contact_email = input("Enter student's parent/guardian contact email: ")
         if "@" in contact_email and "." in contact_email:  # Simple validation check for an email structure
             break  # Valid input, exit loop
         else:
