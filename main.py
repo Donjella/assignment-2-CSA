@@ -1,5 +1,5 @@
 from functions.student_functions import add_student
-from functions.classroom_functions import list_students_by_classroom, delete_student
+from functions.classroom_functions import list_students_by_classroom, delete_student, count_total_students
 from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_day, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
@@ -74,6 +74,7 @@ while choice != "3":  # Main menu loop, "3" is exit
                 delete_student(students, classrooms)
             elif student_choice == "3":
                 list_students_by_classroom(classrooms)  # List students by classroom
+                total_students = count_total_students(classrooms)
             elif student_choice == "4":
                 print("Save changes and return to Main Menu")
                 save_students(students)  # Call save_students while exiting
