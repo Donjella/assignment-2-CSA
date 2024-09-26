@@ -77,7 +77,19 @@ def load_menu(kitchen):
     """Load the kitchen menu from a JSON file."""
     try:
         with open('data/kitchen.json', 'r') as file:
-            kitchen.menu = json.load(file)
-        # print("Menu loaded successfully.")
+            loaded_menu = json.load(file)
+
+        # Use integer keys for mapping back to day names
+        day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday"}
+        kitchen.menu = {}
+        
+        for week, days in loaded_menu.items():
+            kitchen.menu[week] = {}
+            for day, meals in days.items():
+                # Use the correct day mapping
+                kitchen.menu[week][day] = meals
+
+        print("Menu loaded successfully.")
+        
     except FileNotFoundError:
         print("No saved menu found. Starting with an empty menu.")
