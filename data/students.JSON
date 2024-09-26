@@ -16,5 +16,65 @@
         "birthday": "2020-10-12",
         "contact": "022002",
         "allergies": []
+    },
+    {
+        "student_id": 18,
+        "fname": "Avaleah",
+        "lname": "Lucky",
+        "birthday": "2023-10-13",
+        "contact": "1010101",
+        "allergies": []
+    },
+    {
+        "student_id": 45,
+        "fname": "jacob",
+        "lname": "mahler",
+        "birthday": "2019-10-22",
+        "contact": "020202",
+        "allergies": []
+    },
+    {
+        "student_id": 72,
+        "fname": "lucky",
+        "lname": "me",
+        "birthday": "2022-10-14",
+        "contact": "02020202",
+        "allergies": [
+            "Chicken"
+        ]
+    },
+    {
+        "student_id": 9,
+        "fname": "lucky",
+        "lname": "number",
+        "birthday": "2024-01-10",
+        "contact": "1",
+        "allergies": []
+    },
+    {
+        "student_id": 3,
+        "fname": "Brendon",
+        "lname": "Ang",
+        "birthday": "2019-2-22",
+        "contact": "1",
+        "allergies": []
+    },
+    {
+        "student_id": 8,
+        "fname": "brendon",
+        "lname": "an",
+        "birthday": "2021-10-15",
+        "contact": "1",
+        "allergies": []
+    },
+    {
+        "student_id": 9,
+        "fname": "Chicken",
+        "lname": "Burger",
+        "birthday": "2022-10-21",
+        "contact": "1",
+        "allergies": [
+            "Nuggets"
+        ]
     }
 ]
