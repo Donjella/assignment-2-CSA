@@ -5,10 +5,11 @@ from classes.person import Person
 used_student_ids = set()
 
 class Student(Person):
-    def __init__(self, fname, lname, birthday, contact_number, contact_email, allergies = None):
-        super().__init__(fname, lname, birthday, contact_number, contact_email, allergies)
+    def __init__(self, fname, lname, birthday, allergies=None):
+        super().__init__(fname, lname, birthday, allergies=allergies)
         self.student_id = self.generate_unique_id()
         self.classroom = None
+        self.guardian = None  # Will hold an instance of ParentGuardian
 
     def generate_unique_id(self):
         """Generate a unique student ID."""
