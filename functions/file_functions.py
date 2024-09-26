@@ -12,12 +12,12 @@ def save_students(students):
                 'lname': student.lname,
                 'birthday': student.birthday,
                 'allergies': student.allergies,
-                # Use getter methods to retrieve guardian details
+                # Access guardian details through the guardian attribute
                 'guardian': {
-                    'fname': student.get_guardian_fname(),
-                    'lname': student.get_guardian_lname(),
-                    'contact_number': student.get_guardian_contact_number(),
-                    'contact_email': student.get_guardian_contact_email()
+                    'fname': student.guardian.get_guardian_fname(),
+                    'lname': student.guardian.get_guardian_lname(),
+                    'contact_number': student.guardian.get_guardian_contact_number(),
+                    'contact_email': student.guardian.get_guardian_contact_email()
                 }
             }
             for student in students
