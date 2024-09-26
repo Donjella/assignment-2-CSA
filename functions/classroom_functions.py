@@ -16,7 +16,7 @@ def assign_student(classrooms, student, silent=False):
                 formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
                 print(f"{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.")
             assigned = True
-            break  # Exit the loop once the student is assigned3
+            break  # Exit the loop once the student is assigned
 
     # If the student couldn't be assigned to any classroom
     if not assigned and not silent:
