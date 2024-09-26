@@ -1,15 +1,15 @@
 [
     {
         "student_id": 2,
-        "fname": "Ava",
-        "lname": "sira",
-        "birthday": "2023-10-13",
+        "fname": "Avaleah",
+        "lname": "Sirada",
+        "birthday": "2022-10-13",
         "allergies": [],
         "guardian": {
             "fname": "Brendon",
             "lname": "Ang",
             "contact_number": "1",
-            "contact_email": "b@gmail.com"
+            "contact_email": "b2@gmail.com"
         }
     }
 ]

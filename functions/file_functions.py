@@ -1,6 +1,7 @@
 import json
 from classes.students import Student  # Import the Student class
 from functions.classroom_functions import assign_student  
+from classes.parent_guardian import ParentGuardian
 
 
 def save_students(students):
@@ -25,32 +26,42 @@ def save_students(students):
         json.dump(students_to_save, file, indent=4)
 
 
-
 def load_students(students, classrooms):
     """Load student data from a JSON file and populate the students list."""
     try:
         with open('data/students.json', 'r') as file:
             students_data = json.load(file)
             for student_dict in students_data:
-                # Recreate Student objects from the loaded data
+                # Recreate ParentGuardian object from the loaded data
+                guardian_dict = student_dict.get('guardian', {})
+                guardian = ParentGuardian(
+                    fname=guardian_dict.get('fname'),
+                    lname=guardian_dict.get('lname'),
+                    contact_number=guardian_dict.get('contact_number'),
+                    contact_email=guardian_dict.get('contact_email')
+                )
+                # Recreate Student object from the loaded data
                 student = Student(
                     fname=student_dict['fname'],
                     lname=student_dict['lname'],
                     birthday=student_dict['birthday'],
-                    contact=student_dict['contact'],
                     allergies=student_dict.get('allergies', [])
                 )
+            
                 student.student_id = student_dict['student_id']  # Restore the student ID
+                student.guardian = guardian  # Associate the guardian with the student
+                
                 students.append(student)
                 
-                # Assign the student to the correct classroom based on age, using silent=True to suppress messages
-                assign_student(classrooms, student, silent=True) # change silent to true to prevent print student details on startup
+                # Assign the student to the correct classroom based on age
+                # using silent=True to not print assigned list of students on startup
+                assign_student(classrooms, student, silent=True)
 
-        # print("Student data loaded and assigned to classrooms successfully.")
     except FileNotFoundError:
         print("No previous student data found. Starting fresh.")
     except Exception as e:
         print(f"An error occurred while loading students: {e}")
+
 
 
 # Start of kitchen file functions
