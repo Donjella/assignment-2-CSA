@@ -14,7 +14,6 @@ class Student(Person):
         """Generate a unique student ID."""
         # Check if all IDs in the specified range are used
         if len(used_student_ids) >= 2:  # Adjust this number to match your max capacity
-            print("Childcare is full. No more unique IDs available.")
             return None
 
         while True:

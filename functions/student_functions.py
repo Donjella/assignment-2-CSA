@@ -56,6 +56,11 @@ def add_student(students, classrooms):
     # Create a new student 
     student = Student(fname, lname, birthday, contact, allergies)
 
+    # Check if the student_id is None, indicating the ID couldn't be generated
+    if student.student_id is None:
+        print("\nChildcare is full. No more unique student IDs available.")
+        return  # Exit the function without adding the student
+
     # Assign student to the correct classroom based on age
     assign_student(classrooms, student)
 
