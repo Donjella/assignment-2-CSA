@@ -52,14 +52,6 @@
         "allergies": []
     },
     {
-        "student_id": 3,
-        "fname": "Brendon",
-        "lname": "Ang",
-        "birthday": "2019-2-22",
-        "contact": "1",
-        "allergies": []
-    },
-    {
         "student_id": 8,
         "fname": "brendon",
         "lname": "an",
