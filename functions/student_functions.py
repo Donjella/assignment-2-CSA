@@ -1,5 +1,7 @@
+# functions/student_functions.py
 from functions.classroom_functions import assign_student
 from classes.students import Student
+from classes.parent_guardian import ParentGuardian  # Import the ParentGuardian class
 from datetime import datetime
 
 def add_student(students, classrooms):
@@ -12,22 +14,6 @@ def add_student(students, classrooms):
             break  # Valid input, exit loop
         else:
             print("First name and last name should only contain alphabets. Please try again.")
-
-   # Validate emergency contact number (should contain only digits)
-    while True:
-        contact_number = input("Enter student's parent/guardian contact number (numbers only): ")
-        if contact_number.isdigit():
-            break  # Valid input, exit loop
-        else:
-            print("Contact number should only contain numbers. Please try again.")
-
-    # Validate emergency contact email
-    while True:
-        contact_email = input("Enter student's parent/guardian contact email: ")
-        if "@" in contact_email and "." in contact_email:  # Simple validation check for an email structure
-            break  # Valid input, exit loop
-        else:
-            print("Please enter a valid email address.")
 
     # Validate birthday input with try-except block
     while True:
@@ -61,8 +47,43 @@ def add_student(students, classrooms):
             if more_allergies != 'yes':
                 break  # Exit the loop if there are no more allergies
 
-    # Create a new student 
-    student = Student(fname, lname, birthday, contact_number, contact_email, allergies)
+    # Collect guardian details
+    print("\nEnter parent/guardian information:")
+
+    # Validate guardian first name and last name
+    while True:
+        guardian_fname = input("Enter guardian's first name: ")
+        guardian_lname = input("Enter guardian's last name: ")
+
+        if guardian_fname.isalpha() and guardian_lname.isalpha():
+            break  # Valid input, exit loop
+        else:
+            print("First name and last name should only contain alphabets. Please try again.")
+
+    # Validate emergency contact number (should contain only digits)
+    while True:
+        contact_number = input("Enter guardian's contact number (numbers only): ")
+        if contact_number.isdigit():
+            break  # Valid input, exit loop
+        else:
+            print("Contact number should only contain numbers. Please try again.")
+
+    # Validate emergency contact email
+    while True:
+        contact_email = input("Enter guardian's contact email: ")
+        if "@" in contact_email and "." in contact_email:  # Simple validation check for an email structure
+            break  # Valid input, exit loop
+        else:
+            print("Please enter a valid email address.")
+
+    # Create the parent/guardian object
+    guardian = ParentGuardian(guardian_fname, guardian_lname, contact_number, contact_email)
+
+    # Create a new student with guardian details
+    student = Student(fname, lname, birthday, allergies)
+
+    # Attach the guardian to the student
+    student.guardian = guardian
 
     # Check if the student_id is None, indicating the ID couldn't be generated
     if student.student_id is None:
@@ -74,4 +95,3 @@ def add_student(students, classrooms):
 
     # Add student to the global students list
     students.append(student)
-    
