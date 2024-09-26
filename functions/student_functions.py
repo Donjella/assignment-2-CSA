@@ -95,3 +95,32 @@ def add_student(students, classrooms):
 
     # Add student to the global students list
     students.append(student)
+
+def list_guardian_details(students):
+    """List parent/guardian details for a specific student by student ID."""
+    if not students:
+        print("\nNo students to display.\n")
+        return
+    
+    try:
+        # Prompt for a student ID
+        student_id = int(input("\nEnter the student ID to view guardian details: "))
+    except ValueError:
+        print("Invalid input. Please enter a valid numeric student ID.")
+        return
+    
+    # Find the student by ID
+    # use next() to retrieve first item that matach student id
+    student = next((student for student in students if student.student_id == student_id), None)
+    
+    if student:
+        guardian = student.guardian
+        if guardian:
+            print(f"\nStudent: {student.full_name} (ID: {student.get_formatted_id()})")
+            print(f"  Guardian Name: {guardian.full_name}")
+            print(f"  Contact Number: {guardian.contact_number}")
+            print(f"  Contact Email: {guardian.contact_email}\n")
+        else:
+            print(f"Student: {student.full_name} (ID: {student.get_formatted_id()}) has no associated guardian.\n")
+    else:
+        print(f"No student found with ID {student_id}.")
