@@ -6,9 +6,9 @@
             "Afternoon Tea": "Pink"
         },
         "Tuesday": {
-            "Breakfast": null,
-            "Lunch": null,
-            "Afternoon Tea": null
+            "Breakfast": "Ava",
+            "Lunch": "My",
+            "Afternoon Tea": "Girl"
         },
         "Wednesday": {
             "Breakfast": null,

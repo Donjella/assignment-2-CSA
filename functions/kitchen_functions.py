@@ -9,12 +9,12 @@ def add_menu_for_day(kitchen):
     day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday"}
     
     try:
-        day = int(input("Enter the day of the week (1 = Monday, ..., 5 = Friday): "))
+        day = int(input("Enter the day of the week (1 = Monday,..,5 = Friday): "))
         if day not in day_map:
             raise ValueError
         day = day_map[day]
     except ValueError:
-        print("Invalid input. Please enter a number between 1 and 5 for weekdays.")
+        print("Invalid input. Please enter a number between 1 and 5 (weekdays only).")
         return
 
     # Ask the user to input dishes for each meal
@@ -41,47 +41,37 @@ def add_menu_for_day(kitchen):
 
     print(f"Menu for {day} in Week {week} has been updated.\n")
 
-
-def list_menu_for_day(kitchen):
-    """Prompt the user to list the menu for a specific week and day."""
+def list_menu_for_week(kitchen):
+    """Prompt the user to list the menu for a specific week from Monday to Friday."""
     try:
-        week = int(input("Enter the week number: "))
+        week = int(input("Enter the week number: "))  # Prompt for week number
     except ValueError:
         print("Invalid input. Please enter a valid week number (integer).")
         return
 
-    # Use integer keys to map to day strings
-    day_map = {
-        1: "Monday",
-        2: "Tuesday",
-        3: "Wednesday",
-        4: "Thursday",
-        5: "Friday"
-    }
-    
-    try:
-        day_input = int(input("Enter the day of the week (1 = Monday, ..., 5 = Friday): "))
-        day = day_map.get(day_input)
-    except ValueError:
-        print("Invalid day input. Please enter a number between 1 and 5.")
-        return
-
-    if not day:
-        print("Invalid day input. Please enter a number between 1 and 5.")
-        return
-
     # Convert week to string to match JSON structure
     week_str = str(week)
-    
-    if week_str in kitchen.menu and day in kitchen.menu[week_str]:
-        menu_for_day = kitchen.menu[week_str][day]
-        print(f"\nMenu for {day} (Week {week}):")
-        print(f"  Breakfast: {menu_for_day['Breakfast'] or 'No dishes set.'}")
-        print(f"  Lunch: {menu_for_day['Lunch'] or 'No dishes set.'}")
-        print(f"  Afternoon Tea: {menu_for_day['Afternoon Tea'] or 'No dishes set.'}")
-    else:
-        print(f"No menu found for {day} (Week {week}).\n")
 
+    # Check if the week exists in the kitchen menu
+    if week_str not in kitchen.menu:
+        print(f"No menu found for Week {week}.\n")
+        return
+
+    # Days of the week (Monday to Friday)
+    days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
+    print(f"\n--- Menu for Week {week} ---")
+
+    # Loop through each day of the week and display the menu
+    for day in days_of_week:
+        if day in kitchen.menu[week_str]:
+            menu_for_day = kitchen.menu[week_str][day]
+            print(f"\nMenu for {day}:")
+            print(f"  Breakfast: {menu_for_day['Breakfast'] or 'No dishes set.'}")
+            print(f"  Lunch: {menu_for_day['Lunch'] or 'No dishes set.'}")
+            print(f"  Afternoon Tea: {menu_for_day['Afternoon Tea'] or 'No dishes set.'}")
+        else:
+            print(f"No menu found for {day}.")
 
 def list_students_with_allergies(students):
     """List all students with allergies."""

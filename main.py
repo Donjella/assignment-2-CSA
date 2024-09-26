@@ -2,7 +2,7 @@ from functions.student_functions import add_student, list_guardian_details
 from functions.classroom_functions import list_students_by_classroom, delete_student, count_total_students
 from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
-from functions.kitchen_functions import list_menu_for_day, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
+from functions.kitchen_functions import list_menu_for_week, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
 from functions.file_functions import save_students, load_students, save_menu, load_menu
 
 # Global list for students
@@ -49,7 +49,7 @@ def create_kitchen_menu():
     print("\nKitchen Management Menu:")
     print("1. Add/Update Menu for the Day")
     print("2. Delete Menu for the Day")
-    print("3. List Menu for the Day")
+    print("3. List Menu for the Week")
     print("4. List Students with Allergies")
     print("5. Go Back to Main Menu\n")
 
@@ -93,7 +93,7 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif kitchen_choice == "2":
                 delete_menu_for_day(kitchen)  # Delete menu for the day
             elif kitchen_choice == "3":
-                list_menu_for_day(kitchen)  # List the menu for the day
+                list_menu_for_week(kitchen)  # List the menu for the day
             elif kitchen_choice == "4":
                 list_students_with_allergies(students)  # List students with allergies
             elif kitchen_choice == "5":
