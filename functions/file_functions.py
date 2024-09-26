@@ -7,11 +7,11 @@ def save_students(students):
     with open('data/students.json', 'w') as file:
         students_to_save = [
             {
-                'student_id': student.student_id,
-                'fname': student.fname,
-                'lname': student.lname,
-                'birthday': student.birthday,
-                'allergies': student.allergies,
+                'student_id': student.get_student_id(),
+                'fname': student.get_fname(),
+                'lname': student.get_lname(),
+                'birthday': student.get_birthday(),
+                'allergies': student.get_allergies(),
                 # Access guardian details through the guardian attribute
                 'guardian': {
                     'fname': student.guardian.get_guardian_fname(),
@@ -23,6 +23,7 @@ def save_students(students):
             for student in students
         ]
         json.dump(students_to_save, file, indent=4)
+
 
 
 def load_students(students, classrooms):
