@@ -2,19 +2,25 @@ import json
 from classes.students import Student  # Import the Student class
 from functions.classroom_functions import assign_student  
 
+
 def save_students(students):
     with open('data/students.json', 'w') as file:
-        # Filter students who have been assigned to a classroom
         students_to_save = [
             {
                 'student_id': student.student_id,
                 'fname': student.fname,
                 'lname': student.lname,
                 'birthday': student.birthday,
-                'contact': student.contact,
                 'allergies': student.allergies,
+                # Use getter methods to retrieve guardian details
+                'guardian': {
+                    'fname': student.get_guardian_fname(),
+                    'lname': student.get_guardian_lname(),
+                    'contact_number': student.get_guardian_contact_number(),
+                    'contact_email': student.get_guardian_contact_email()
+                }
             }
-            for student in students if student.classroom is not None  # Only save if assigned to a classroom
+            for student in students
         ]
         json.dump(students_to_save, file, indent=4)
 

@@ -1,0 +1,15 @@
+[
+    {
+        "student_id": 1,
+        "fname": "Avaleah",
+        "lname": "Sirada",
+        "birthday": "2023-10-13",
+        "allergies": [],
+        "guardian": {
+            "fname": "Brendon",
+            "lname": "Ang",
+            "contact_number": "0",
+            "contact_email": "br@gmail.com"
+        }
+    }
+]
