@@ -1,13 +1,13 @@
 def add_menu_for_day(kitchen):
     """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
-    week = input("Enter the week number: ")
     try:
-        week = int(week)  # Convert week number to integer
+        week = int(input("Enter the week number: "))  # Convert week number to integer
     except ValueError:
         print("Invalid input. Please enter a valid week number (integer).")
         return
 
     day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday"}
+    
     try:
         day = int(input("Enter the day of the week (1 = Monday, ..., 5 = Friday): "))
         if day not in day_map:
@@ -22,8 +22,24 @@ def add_menu_for_day(kitchen):
     lunch = input("Enter the lunch dish: ").strip().title()
     afternoon_tea = input("Enter the afternoon tea dish: ").strip().title()
 
-    # Add each dish to the respective meal
-    kitchen.add_menu(week, day, breakfast, lunch, afternoon_tea)
+    # Check if the week already exists; if not, update menu without creating a new week
+    # Also helps prevent duplicate weeks in the kitchen.JSON file
+    week_str = str(week)
+    if week_str not in kitchen.menu:
+        kitchen.menu[week_str] = {
+            "Monday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+            "Tuesday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+            "Wednesday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+            "Thursday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
+            "Friday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
+        }
+
+    # Set the dish for each meal (breakfast, lunch, and afternoon tea)
+    kitchen.menu[week_str][day]["Breakfast"] = breakfast
+    kitchen.menu[week_str][day]["Lunch"] = lunch
+    kitchen.menu[week_str][day]["Afternoon Tea"] = afternoon_tea
+
+    print(f"Menu for {day} in Week {week} has been updated.\n")
 
 
 def list_menu_for_day(kitchen):
