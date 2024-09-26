@@ -13,13 +13,21 @@ def add_student(students, classrooms):
         else:
             print("First name and last name should only contain alphabets. Please try again.")
 
-    # Validate contact information (should contain only digits)
+   # Validate emergency contact number (should contain only digits)
     while True:
-        contact = input("Enter student's contact information (numbers only): ")
-        if contact.isdigit():
+        contact_number = input("Enter student's emergency contact number (numbers only): ")
+        if contact_number.isdigit():
             break  # Valid input, exit loop
         else:
-            print("Contact information should only contain numbers. Please try again.")
+            print("Contact number should only contain numbers. Please try again.")
+
+    # Validate emergency contact email
+    while True:
+        contact_email = input("Enter student's emergency contact email: ")
+        if "@" in contact_email and "." in contact_email:  # Simple validation check for an email structure
+            break  # Valid input, exit loop
+        else:
+            print("Please enter a valid email address.")
 
     # Validate birthday input with try-except block
     while True:
@@ -54,7 +62,7 @@ def add_student(students, classrooms):
                 break  # Exit the loop if there are no more allergies
 
     # Create a new student 
-    student = Student(fname, lname, birthday, contact, allergies)
+    student = Student(fname, lname, birthday, contact_number, contact_email, allergies)
 
     # Check if the student_id is None, indicating the ID couldn't be generated
     if student.student_id is None:

@@ -5,8 +5,8 @@ from classes.person import Person
 used_student_ids = set()
 
 class Student(Person):
-    def __init__(self, fname, lname, birthday, contact, allergies = None):
-        super().__init__(fname, lname, birthday, contact, allergies)
+    def __init__(self, fname, lname, birthday, contact_number, contact_email, allergies = None):
+        super().__init__(fname, lname, birthday, contact_number, contact_email, allergies)
         self.student_id = self.generate_unique_id()
         self.classroom = None
 

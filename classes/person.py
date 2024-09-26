@@ -1,11 +1,12 @@
 from datetime import datetime
 
 class Person:
-    def __init__(self, fname, lname, birthday, contact, allergies=None):
+    def __init__(self, fname, lname, birthday, contact_number, contact_email, allergies=None):
         self.fname = fname
         self.lname = lname
         self.birthday = birthday
-        self.contact = contact
+        self.contact_number = contact_number
+        self.contact_email = contact_email
         self.allergies = allergies if allergies is not None else []  # Default to an empty list if no allergies provided
 
     @property
