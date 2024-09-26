@@ -1,6 +1,11 @@
 def add_menu_for_day(kitchen):
     """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
-    week = input("Enter the week number: ")
+    try:
+        week = int(input("Enter the week number: ").strip())  # Convert input to int
+    except ValueError:
+        print("Invalid input. Please enter a valid week number (integer).")
+        return
+
     day = input("Enter the day of the week: ").capitalize()
 
     # Ask the user to input dishes for each meal
@@ -15,7 +20,7 @@ def add_menu_for_day(kitchen):
 def list_menu_for_day(kitchen):
     """Prompt the user to list the menu for a specific week and day."""
     try:
-        week = int(input("Enter the week number: "))
+        week = int(input("Enter the week number: ").strip())  # Convert input to int
     except ValueError:
         print("Invalid input. Please enter a valid week number (integer).")
         return
@@ -29,6 +34,8 @@ def list_menu_for_day(kitchen):
         print(f"  Lunch: {menu_for_day['Lunch'] or 'No dishes set.'}")
         print(f"  Afternoon Tea: {menu_for_day['Afternoon Tea'] or 'No dishes set.'}")
     else:
+        print(f"No menu found for {day} (Week {week}).\n")
+
         print(f"No menu found for {day} (Week {week}).\n")
 
 def list_students_with_allergies(students):

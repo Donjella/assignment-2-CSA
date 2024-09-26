@@ -101,14 +101,13 @@ def list_guardian_details(students):
     if not students:
         print("\nNo students to display.\n")
         return
-    
     try:
         # Prompt for a student ID
         student_id = int(input("\nEnter the student ID to view guardian details: "))
     except ValueError:
         print("Invalid input. Please enter a valid numeric student ID.")
         return
-    
+
     # Find the student by ID
     # use next() to retrieve first item that matach student id
     student = next((student for student in students if student.student_id == student_id), None)

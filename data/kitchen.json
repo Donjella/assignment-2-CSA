@@ -1,1 +1,76 @@
-{}
+{
+    "1": {
+        "Monday": {
+            "Breakfast": "Chicken",
+            "Lunch": "Nugget",
+            "Afternoon Tea": "Elephant"
+        },
+        "Tuesday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Wednesday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Thursday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Friday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Saturday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Sunday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        }
+    },
+    "1": {
+        "Monday": {
+            "Breakfast": "Chicken",
+            "Lunch": "Fish",
+            "Afternoon Tea": "Nuggets"
+        },
+        "Tuesday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Wednesday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Thursday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Friday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Saturday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Sunday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        }
+    }
+}

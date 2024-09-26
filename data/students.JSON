@@ -11,5 +11,20 @@
             "contact_number": "1",
             "contact_email": "b2@gmail.com"
         }
+    },
+    {
+        "student_id": 1,
+        "fname": "Sirada",
+        "lname": "Cutey",
+        "birthday": "2021-10-13",
+        "allergies": [
+            "Peanut"
+        ],
+        "guardian": {
+            "fname": "Nokky",
+            "lname": "cute",
+            "contact_number": "1",
+            "contact_email": "n@gmail.com"
+        }
     }
 ]
