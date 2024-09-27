@@ -133,7 +133,7 @@ def add_student(students, classrooms):
             print("\nInput interrupted.")
             return  
 
-    # Validate emergency contact number (should contain only digits)
+    # Validate emergency contact number (should contain only digits and check length)
     while True:
         try:
             contact_number = input("Enter guardian's contact number (numbers only): ").strip()
@@ -149,11 +149,27 @@ def add_student(students, classrooms):
 
     # Validate emergency contact email
     while True:
-        contact_email = input("Enter guardian's contact email: ")
-        if "@" in contact_email and "." in contact_email:  # Simple validation check for an email structure
-            break  # Valid input, exit loop
-        else:
-            print("Please enter a valid email address.")
+        try:
+            contact_email = input("Enter guardian's contact email: ").strip()
+            
+            # Check for spaces
+            if " " in contact_email:
+                raise ValueError("Email address should not contain spaces.")
+            
+            # Check for a single '@'
+            if contact_email.count("@") != 1:
+                raise ValueError("Email address should contain exactly one '@' symbol.")
+            
+            # If all checks pass, break the loop
+            break
+            
+        except ValueError as e:
+            print(e)
+        except EOFError:
+            print("\nInput interrupted.")
+            return
+        except Exception:
+            print("Please enter a valid email.")
 
     # Create the parent/guardian object
     guardian = ParentGuardian(guardian_fname, guardian_lname, contact_number, contact_email)
