@@ -89,8 +89,6 @@ def load_menu(kitchen):
             for day, meals in days.items():
                 # Use the correct day mapping
                 kitchen.menu[week][day] = meals
-
-        print("Menu loaded successfully.")
         
     except FileNotFoundError:
         print("No saved menu found. Starting with an empty menu.")

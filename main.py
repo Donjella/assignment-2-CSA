@@ -25,7 +25,7 @@ kitchen = Kitchen()
 load_menu(kitchen)
 
 def create_main_menu():
-    print("Welcome to the Childcare Management App\n")
+    print("\nWelcome to the Childcare Management App\n")
     print("What would you like to manage?")
     print("1. Students")
     print("2. Kitchen")

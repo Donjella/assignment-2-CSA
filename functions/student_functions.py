@@ -41,7 +41,6 @@ def add_student(students, classrooms):
             print("\nInput interrupted.")
             return  
 
-
     # Validate birthday input with try...except block
     while True:
         birthday = input("Enter student's birthday (YYYY-MM-DD): ")
@@ -52,35 +51,43 @@ def add_student(students, classrooms):
         except ValueError:
             print("Invalid date format or date out of range. Please enter valid date in the format YYYY-MM-DD.")
 
-    # Initialize an empty list for allergies
-    allergies = []
+     # Initialize an empty list for allergies
+        allergies = []
 
-    # Validate if the student has allergies
-    while True:
-        has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
-        if has_allergy in ['yes', 'y', 'no', 'n']:
-            break  # Valid input, exit loop
-        else:
-            print("Please enter a valid answer - 'yes', 'y', 'no', or 'n'.")
-
-    # If the student has allergies, ask for each allergy
-    if has_allergy in ['yes', 'y']:
+        # Validate if the student has allergies
         while True:
-            # Get the first allergy
-            allergy = input("Enter the allergy: ").strip().capitalize()
-            allergies.append(allergy)
+            has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
+            if has_allergy in ['yes', 'y', 'no', 'n']:
+                break  # Valid input, exit loop
+            else:
+                print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
 
-            # Ask if there are more allergies
+        # If the student has allergies, ask for each allergy
+        if has_allergy in ['yes', 'y']:
             while True:
-                more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
-                if more_allergies in ['yes', 'y', 'no', 'n']:
-                    break  # Valid input, exit loop
-                else:
-                    print("Please enter a valid answer - 'yes', 'y', 'no', or 'n'.")
+                try:
+                    # Get the first allergy
+                    allergy = input("Enter the allergy: ").strip().capitalize()
+                    
+                    # Check that allergy is not empty and contains only alphabetic characters, spaces, or hyphens
+                    if allergy and all(char.isalpha() or char in [' ', '-'] for char in allergy):
+                        allergies.append(allergy)
+                    else:
+                        raise ValueError("Allergy should only contain alphabetic characters, spaces, or hyphens. Please try again.")
 
-            # Exit the loop if there are no more allergies
-            if more_allergies in ['no', 'n']:
-                break
+                    # Ask if there are more allergies
+                    while True:
+                        more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
+                        if more_allergies in ['yes', 'y', 'no', 'n']:
+                            break  # Valid input, exit loop
+                        else:
+                            print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
+
+                    # Exit the loop if there are no more allergies
+                    if more_allergies in ['no', 'n']:
+                        break
+                except ValueError as e:
+                    print(e)
 
     # Collect guardian details
     print("\nEnter parent/guardian information:")
@@ -100,7 +107,7 @@ def add_student(students, classrooms):
         except ValueError as e:
             print(e)
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted. Exiting guardian first name entry.")
+            print("\nInput interrupted.")
             return  # You can choose to exit the function or handle as needed
 
 # Validate guardian last name
@@ -118,7 +125,7 @@ def add_student(students, classrooms):
         except ValueError as e:
             print(e)
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted. Exiting guardian last name entry.")
+            print("\nInput interrupted.")
             return  
 
     # Validate emergency contact number (should contain only digits)
@@ -130,8 +137,9 @@ def add_student(students, classrooms):
                 break  # Valid input, exit loop
             else:
                 print("Contact number should start with '04' for mobiles or '0' for landlines, and contain exactly 10 digits.")
+                print("International contacts with '+' area codes are not accepted\n")
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted. Exiting contact number entry.")
+            print("\nInput interrupted.")
             return 
 
     # Validate emergency contact email

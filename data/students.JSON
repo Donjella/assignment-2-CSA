@@ -15,16 +15,18 @@
         }
     },
     {
-        "student_id": 93,
-        "fname": "Siwa",
-        "lname": "Korn",
-        "birthday": "2020-10-14",
-        "allergies": [],
+        "student_id": 44,
+        "fname": "Sak",
+        "lname": "Rapee",
+        "birthday": "1992-10-22",
+        "allergies": [
+            "0"
+        ],
         "guardian": {
             "fname": "Nokky",
-            "lname": "Jaitham",
-            "contact_number": "0",
-            "contact_email": "be@gmail.com"
+            "lname": "Ba",
+            "contact_number": "0401163578",
+            "contact_email": "hhaha@gmail.com"
         }
     }
 ]

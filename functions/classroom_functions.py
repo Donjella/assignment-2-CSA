@@ -21,7 +21,7 @@ def assign_student(classrooms, student, silent=False):
     # If the student couldn't be assigned to any classroom
     if not assigned and not silent:
         formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
-        print(f"{student.full_name}, {formatted_age} cannot be added to any classroom due to age restriction.")
+        print(f"{student.full_name}, {formatted_age} cannot be added to any classroom due to age restriction. Therefore, he is not enrolled.")
 
 
 def list_students_by_classroom(classrooms):
