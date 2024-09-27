@@ -1,29 +1,53 @@
 def add_menu_for_day(kitchen):
     """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
     try:
-        week = int(input("Enter the week number: "))  # Convert week number to integer
-    except ValueError:
-        print("Invalid input. Please enter a valid week number (integer).")
-        return
+        # Prompt for week number
+        week_input = input("Enter the week number (1-52): ").strip()
+        if not week_input:
+            raise ValueError("Week number cannot be empty.")
+        week = int(week_input)
 
-    day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday"}
-    
-    try:
-        day = int(input("Enter the day of the week (1 = Monday,..,5 = Friday): "))
+        # Ensure week is within valid range (1-52)
+        if week < 1 or week > 52:
+            raise ValueError("Please enter a valid week number between 1 and 52.\n")
+
+        # Day mapping
+        day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday"}
+        
+        # Prompt for day of the week
+        day_input = input("Enter the day of the week (1 = Monday,..,5 = Friday): ").strip()
+        if not day_input:
+            raise ValueError("Day cannot be empty.\n")
+        day = int(day_input)
+        
         if day not in day_map:
-            raise ValueError
+            raise ValueError("Please enter a number between 1 and 5 (weekdays only).\n")
         day = day_map[day]
-    except ValueError:
-        print("Invalid input. Please enter a number between 1 and 5 (weekdays only).")
+
+        print(f"Adding menu for Week {week}, Day: {day}")
+
+    except ValueError as error:
+        print(f"{error}")
+        return  
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted.")
+        return
+    except Exception as e:
+        print("\nAn unexpected error occurred")
         return
 
     # Ask the user to input dishes for each meal
-    breakfast = input("Enter the breakfast dish: ").strip().title()
-    lunch = input("Enter the lunch dish: ").strip().title()
-    afternoon_tea = input("Enter the afternoon tea dish: ").strip().title()
+    try:
+        breakfast = input("Enter the breakfast dish: ").strip().title()
+        lunch = input("Enter the lunch dish: ").strip().title()
+        afternoon_tea = input("Enter the afternoon tea dish: ").strip().title()
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted.")
+        return
+    except Exception as e:
+        print("\nAn unexpected error occurred")
+        return
 
-    # Check if the week already exists; if not, update menu without creating a new week
-    # Also helps prevent duplicate weeks in the kitchen.JSON file
     week_str = str(week)
     if week_str not in kitchen.menu:
         kitchen.menu[week_str] = {
@@ -34,7 +58,6 @@ def add_menu_for_day(kitchen):
             "Friday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
         }
 
-    # Set the dish for each meal (breakfast, lunch, and afternoon tea)
     kitchen.menu[week_str][day]["Breakfast"] = breakfast
     kitchen.menu[week_str][day]["Lunch"] = lunch
     kitchen.menu[week_str][day]["Afternoon Tea"] = afternoon_tea
@@ -42,27 +65,28 @@ def add_menu_for_day(kitchen):
     print(f"Menu for {day} in Week {week} has been updated.\n")
 
 def list_menu_for_week(kitchen):
-    """Prompt the user to list the menu for a specific week from Monday to Friday."""
     try:
-        week = int(input("Enter the week number: "))  # Prompt for week number
+        week = int(input("Enter the week number: "))
     except ValueError:
         print("Invalid input. Please enter a valid week number (integer).")
         return
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted.")
+        return
+    except Exception as e:
+        print("\nAn unexpected error occurred")
+        return
 
-    # Convert week to string to match JSON structure
     week_str = str(week)
 
-    # Check if the week exists in the kitchen menu
     if week_str not in kitchen.menu:
         print(f"No menu found for Week {week}.\n")
         return
 
-    # Days of the week (Monday to Friday)
     days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
     print(f"\n--- Menu for Week {week} ---")
 
-    # Loop through each day of the week and display the menu
     for day in days_of_week:
         if day in kitchen.menu[week_str]:
             menu_for_day = kitchen.menu[week_str][day]
@@ -74,7 +98,6 @@ def list_menu_for_week(kitchen):
             print(f"No menu found for {day}.")
 
 def list_students_with_allergies(students):
-    """List all students with allergies."""
     students_with_allergies = [student for student in students if student.allergies]
     
     if not students_with_allergies:
@@ -86,14 +109,18 @@ def list_students_with_allergies(students):
             print(f"{student.full_name} (Student ID: {student.get_formatted_id()}) has the following allergies: {allergies}\n")
 
 def delete_menu_for_day(kitchen):
-    """Prompt the user to delete the menu for a specific week and day."""
     try:
-        week = int(input("Enter the week number: "))  # Convert week number to integer
+        week = int(input("Enter the week number: "))
     except ValueError:
         print("Invalid input. Please enter a valid week number (integer).")
         return
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted.")
+        return
+    except Exception as e:
+        print("\nAn unexpected error occurred")
+        return
 
-    # Use integer keys to map to day strings (Monday to Friday)
     day_map = {
         1: "Monday",
         2: "Tuesday",
@@ -102,7 +129,6 @@ def delete_menu_for_day(kitchen):
         5: "Friday"
     }
     
-    # Convert numeric input to day name
     try:
         day_input = int(input("Enter the day of the week (1 = Monday, ..., 5 = Friday): "))
         if day_input not in day_map:
@@ -111,11 +137,15 @@ def delete_menu_for_day(kitchen):
     except ValueError:
         print("Invalid input. Please enter a number between 1 and 5 for weekdays.")
         return
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted.")
+        return
+    except Exception as e:
+        print("\nAn unexpected error occurred")
+        return
 
-    # Convert week to string to match JSON structure
     week_str = str(week)
     
-    # Delete menu for the specified day and week
     if week_str in kitchen.menu and day in kitchen.menu[week_str]:
         kitchen.menu[week_str][day] = {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
         print(f"Menu for {day} (Week {week}) has been deleted.\n")

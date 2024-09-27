@@ -16,7 +16,7 @@ def students():
     return []
 
 def test_add_student(mocker, students, classrooms):
-    # Mock 'inputs' for the student details 
+    # Mock 'inputs' for the student details and follows all validation from actual add student_function
     mocker.patch('builtins.input', side_effect=[
         'Simon',      # First name
         'Cowell',     # Last name
@@ -28,7 +28,7 @@ def test_add_student(mocker, students, classrooms):
         'no',          # no when asking for any more allergies
         'Mary',       # Guardian's first name
         'Lamb',       # Guardian's last name
-        '123456789',  # Guardian's contact number
+        '0406346693',  # Guardian's contact number - needs to be 
         'mary@example.com'  # Guardian's contact email
     ])
     

@@ -32,7 +32,7 @@ def create_menu(menu_title, options, valid_choices):
             for option in options:
                 print(option)
 
-            choice = input("\nEnter your choice: ")
+            choice = input("Enter your choice: ")
             if choice in valid_choices:
                 return choice  # Valid input, return choice
             else:
