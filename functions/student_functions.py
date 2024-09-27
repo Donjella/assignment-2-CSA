@@ -5,15 +5,30 @@ from classes.parent_guardian import ParentGuardian  # Import the ParentGuardian 
 from datetime import datetime
 
 def add_student(students, classrooms):
-    # Validate first name (fname) and last name (lname)
+    # Validate first name (fname)
     while True:
-        fname = input("Enter student's first name: ")
-        lname = input("Enter student's last name: ")
+        try:
+            fname = input("Enter student's first name: ")
+            # Allow alphabets and hyphen only
+            if fname.replace('-', '').isalpha():
+                break  # Valid input, exit loop
+            else:
+                raise ValueError("First name should only contain alphabets. Hyphens ('-') are allowed.")
+        except ValueError as e:
+            print(e)
 
-        if fname.isalpha() and lname.isalpha():
-            break  # Valid input, exit loop
-        else:
-            print("First name and last name should only contain alphabets. Please try again.")
+    # Validate last name (lname)
+    while True:
+        try:
+            lname = input("Enter student's last name: ")
+            # Allow alphabets and hyphen only
+            if lname.replace('-', '').isalpha():
+                break  # Valid input, exit loop
+            else:
+                raise ValueError("Last name should only contain alphabets. Hyphens ('-') are allowed.")
+        except ValueError as e:
+            print(e)
+
 
     # Validate birthday input with try-except block
     while True:
