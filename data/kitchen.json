@@ -1,9 +1,9 @@
 {
     "1": {
         "Monday": {
-            "Breakfast": "Fish",
-            "Lunch": "Chicken",
-            "Afternoon Tea": "Pink"
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
         },
         "Tuesday": {
             "Breakfast": "Ava",

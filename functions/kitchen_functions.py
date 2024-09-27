@@ -88,15 +88,36 @@ def list_students_with_allergies(students):
 def delete_menu_for_day(kitchen):
     """Prompt the user to delete the menu for a specific week and day."""
     try:
-        week = int(input("Enter the week number: "))
+        week = int(input("Enter the week number: "))  # Convert week number to integer
     except ValueError:
         print("Invalid input. Please enter a valid week number (integer).")
         return
 
-    day = input("Enter the day of the week: ").capitalize()
+    # Use integer keys to map to day strings (Monday to Friday)
+    day_map = {
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday"
+    }
+    
+    # Convert numeric input to day name
+    try:
+        day_input = int(input("Enter the day of the week (1 = Monday, ..., 5 = Friday): "))
+        if day_input not in day_map:
+            raise ValueError
+        day = day_map[day_input]
+    except ValueError:
+        print("Invalid input. Please enter a number between 1 and 5 for weekdays.")
+        return
 
-    if week in kitchen.menu and day in kitchen.menu[week]:
-        kitchen.menu[week][day] = {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
+    # Convert week to string to match JSON structure
+    week_str = str(week)
+    
+    # Delete menu for the specified day and week
+    if week_str in kitchen.menu and day in kitchen.menu[week_str]:
+        kitchen.menu[week_str][day] = {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
         print(f"Menu for {day} (Week {week}) has been deleted.\n")
     else:
         print(f"No menu found for {day} (Week {week}).\n")
