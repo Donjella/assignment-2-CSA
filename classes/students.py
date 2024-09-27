@@ -14,11 +14,11 @@ class Student(Person):
     def generate_unique_id(self):
         """Generate a unique student ID."""
         # Check if all IDs in the specified range are used
-        if len(used_student_ids) >= 2:  # Adjust this number to match your max capacity
+        if len(used_student_ids) >= 100:  # Adjust this number to match student's max capacity
             return None
 
         while True:
-            new_id = random.randint(1, 2)  # Adjusted range for 1-2
+            new_id = random.randint(1, 100)  # Adjusted range for 1-100 to fit 100 unique student ids
             if new_id not in used_student_ids:  # Check if the ID is unique
                 used_student_ids.add(new_id)    # Add the ID to the set of used IDs
                 return new_id
