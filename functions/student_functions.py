@@ -9,8 +9,11 @@ def add_student(students, classrooms):
     while True:
         try:
             fname = input("Enter student's first name: ")
-            # Allow alphabets and hyphen only
-            if fname.replace('-', '').isalpha():
+            # Check for consecutive hyphens first
+            if '--' in fname:
+                raise ValueError("First name cannot contain consecutive hyphens ('--').")
+            # Allow alphabets and hyphens only
+            elif fname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
                 raise ValueError("First name should only contain alphabets. Hyphens ('-') are allowed.")
