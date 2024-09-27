@@ -1,32 +1,17 @@
 [
     {
-        "student_id": 8,
+        "student_id": 81,
         "fname": "Avaleah",
         "lname": "Sirada",
         "birthday": "2023-10-13",
         "allergies": [
-            "Peanuts"
-        ],
-        "guardian": {
-            "fname": "Brendon",
-            "lname": "Ang",
-            "contact_number": "0",
-            "contact_email": "b@gmail.com"
-        }
-    },
-    {
-        "student_id": 44,
-        "fname": "Sak",
-        "lname": "Rapee",
-        "birthday": "1992-10-22",
-        "allergies": [
-            "0"
+            "Noo"
         ],
         "guardian": {
             "fname": "Nokky",
-            "lname": "Ba",
+            "lname": "Jaitham",
             "contact_number": "0401163578",
-            "contact_email": "hhaha@gmail.com"
+            "contact_email": "nn@gmail.com"
         }
     }
 ]

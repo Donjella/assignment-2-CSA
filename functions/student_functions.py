@@ -45,49 +45,54 @@ def add_student(students, classrooms):
     while True:
         birthday = input("Enter student's birthday (YYYY-MM-DD): ")
         try:
-            # Try to parse the date; if it fails, an exception is raised
-            datetime.strptime(birthday, "%Y-%m-%d")
-            break  # Valid date, exit loop
+            birthday_date = datetime.strptime(birthday, "%Y-%m-%d")
+            # Calculate age based on birthday and current date
+            age_in_years = (datetime.now() - birthday_date).days // 365
+            # Check if the age falls within any classroom range
+            if not any(classroom.is_valid_for_age(age_in_years) for classroom in classrooms):
+                print(f"Student's age ({age_in_years} years) is out of the range for all available classrooms. No further input is needed")
+                return  # Exit the function without collecting more input
+            break
         except ValueError:
             print("Invalid date format or date out of range. Please enter valid date in the format YYYY-MM-DD.")
 
      # Initialize an empty list for allergies
-        allergies = []
+    allergies = []
 
-        # Validate if the student has allergies
+    # Validate if the student has allergies
+    while True:
+        has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
+        if has_allergy in ['yes', 'y', 'no', 'n']:
+            break  # Valid input, exit loop
+        else:
+            print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
+
+    # If the student has allergies, ask for each allergy
+    if has_allergy in ['yes', 'y']:
         while True:
-            has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
-            if has_allergy in ['yes', 'y', 'no', 'n']:
-                break  # Valid input, exit loop
-            else:
-                print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
+            try:
+                # Get the first allergy
+                allergy = input("Enter the allergy: ").strip().capitalize()
+                
+                # Check that allergy is not empty and contains only alphabetic characters, spaces, or hyphens
+                if allergy and all(char.isalpha() or char in [' ', '-'] for char in allergy):
+                    allergies.append(allergy)
+                else:
+                    raise ValueError("Allergy should only contain alphabetic characters, spaces, or hyphens. Please try again.")
 
-        # If the student has allergies, ask for each allergy
-        if has_allergy in ['yes', 'y']:
-            while True:
-                try:
-                    # Get the first allergy
-                    allergy = input("Enter the allergy: ").strip().capitalize()
-                    
-                    # Check that allergy is not empty and contains only alphabetic characters, spaces, or hyphens
-                    if allergy and all(char.isalpha() or char in [' ', '-'] for char in allergy):
-                        allergies.append(allergy)
+                # Ask if there are more allergies
+                while True:
+                    more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
+                    if more_allergies in ['yes', 'y', 'no', 'n']:
+                        break  # Valid input, exit loop
                     else:
-                        raise ValueError("Allergy should only contain alphabetic characters, spaces, or hyphens. Please try again.")
+                        print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
 
-                    # Ask if there are more allergies
-                    while True:
-                        more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
-                        if more_allergies in ['yes', 'y', 'no', 'n']:
-                            break  # Valid input, exit loop
-                        else:
-                            print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
-
-                    # Exit the loop if there are no more allergies
-                    if more_allergies in ['no', 'n']:
-                        break
-                except ValueError as e:
-                    print(e)
+                # Exit the loop if there are no more allergies
+                if more_allergies in ['no', 'n']:
+                    break
+            except ValueError as e:
+                print(e)
 
     # Collect guardian details
     print("\nEnter parent/guardian information:")

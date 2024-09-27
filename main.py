@@ -24,38 +24,55 @@ kitchen = Kitchen()
 # Load the kitchen menu from the saved kitchen.json file
 load_menu(kitchen)
 
-def create_main_menu():
-    print("\nWelcome to the Childcare Management App\n")
-    print("What would you like to manage?")
-    print("1. Students")
-    print("2. Kitchen")
-    print("3. Exit\n")
+def create_menu(menu_title, options, valid_choices):
+    """Generic function to display a menu and get a validated user choice."""
+    while True:
+        try:
+            print(f"\n{menu_title}")
+            for option in options:
+                print(option)
 
-    choice = input("Enter your choice: ")
-    return choice
+            choice = input("\nEnter your choice: ")
+            if choice in valid_choices:
+                return choice  # Valid input, return choice
+            else:
+                print(f"Invalid choice. Please enter a number between {valid_choices[0]} and {valid_choices[-1]}.")
+        except (EOFError, KeyboardInterrupt):
+            print("\nInput interrupted. Returning to Main Menu.")
+            return valid_choices[-1]  # Return the last valid choice to exit gracefully
+
+def create_main_menu():
+    return create_menu(
+        "Welcome to the Childcare Management App\nWhat would you like to manage?",
+        ["1. Students", "2. Kitchen", "3. Exit\n"],
+        ["1", "2", "3"]
+    )
 
 def create_student_menu():
-    print("\nStudent Management Menu:")
-    print("1. Add Student")
-    print("2. Delete Student")
-    print("3. List Students")
-    print("4. Display Parent/Guardian Details")
-    print("5. Save changes and return to Main Menu")
-
-    choice = input("\nEnter your choice: ")
-    return choice
+    return create_menu(
+        "Student Management Menu:",
+        [
+            "1. Add Student",
+            "2. Delete Student",
+            "3. List Students",
+            "4. Display Parent/Guardian Details",
+            "5. Save changes and return to Main Menu"
+        ],
+        ["1", "2", "3", "4", "5"]
+    )
 
 def create_kitchen_menu():
-    print("\nKitchen Management Menu:")
-    print("1. Add/Update Menu for the Day")
-    print("2. Delete Menu for the Day")
-    print("3. List Menu for the Week")
-    print("4. List Students with Allergies")
-    print("5. Save changes and return to Main Menu\n")
-
-    choice = input("\nEnter your choice: ")
-    return choice
-
+    return create_menu(
+        "Kitchen Management Menu:",
+        [
+            "1. Add/Update Menu for the Day",
+            "2. Delete Menu for the Day",
+            "3. List Menu for the Week",
+            "4. List Students with Allergies",
+            "5. Save changes and return to Main Menu\n"
+        ],
+        ["1", "2", "3", "4", "5"]
+    )
 
 # Main logic
 choice = ""
@@ -80,8 +97,6 @@ while choice != "3":  # Main menu loop, "3" is exit
                 list_guardian_details(students)  # Display parent/guardian details
             elif student_choice == "5":
                 save_students(students)  # Call save_students while exiting
-            else:
-                print("Invalid choice. Please try again.")
 
     elif choice == "2":  # Kitchen menu
         kitchen_choice = ""
@@ -92,16 +107,13 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif kitchen_choice == "2":
                 delete_menu_for_day(kitchen)  # Delete menu for the day
             elif kitchen_choice == "3":
-                list_menu_for_week(kitchen)  # List the menu for the day
+                list_menu_for_week(kitchen)  # List the menu for the week
             elif kitchen_choice == "4":
                 list_students_with_allergies(students)  # List students with allergies
             elif kitchen_choice == "5":
                 print("Save changes and return to Main Menu")
                 save_menu(kitchen)  # Call save_menu to save the kitchen data before exiting
                 break  # Break the kitchen menu loop to return to the main menu
-            else:
-                print("Invalid choice. Please try again.")
 
     elif choice == "3":  # Exit option
         print("\nExiting the application. Goodbye!\n")
-       

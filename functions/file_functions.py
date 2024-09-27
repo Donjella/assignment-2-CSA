@@ -3,30 +3,33 @@ from classes.students import Student  # Import the Student class
 from functions.classroom_functions import assign_student  
 from classes.parent_guardian import ParentGuardian
 
-
 def save_students(students):
     with open('data/students.json', 'w') as file:
-        students_to_save = [
-            {
-                'student_id': student.get_student_id(),
-                'fname': student.get_fname(),
-                'lname': student.get_lname(),
-                'birthday': student.get_birthday(),
-                'allergies': student.get_allergies(),
-                # Access guardian details through the guardian attribute
-                'guardian': {
-                    'fname': student.guardian.get_guardian_fname(),
-                    'lname': student.guardian.get_guardian_lname(),
-                    'contact_number': student.guardian.get_guardian_contact_number(),
-                    'contact_email': student.guardian.get_guardian_contact_email()
+        students_to_save = []
+        for student in students:
+            # Only save students who have been successfully assigned a classroom and have valid attributes
+            if student.classroom and student.fname and student.lname and student.student_id:
+                student_data = {
+                    'student_id': student.get_student_id(),
+                    'fname': student.get_fname(),
+                    'lname': student.get_lname(),
+                    'birthday': student.get_birthday(),
+                    'allergies': student.get_allergies(),
                 }
-            }
-            for student in students
-        ]
+                
+                # Check if guardian exists before accessing its attributes
+                if student.guardian:
+                    student_data['guardian'] = {
+                        'fname': student.guardian.get_guardian_fname(),
+                        'lname': student.guardian.get_guardian_lname(),
+                        'contact_number': student.guardian.get_guardian_contact_number(),
+                        'contact_email': student.guardian.get_guardian_contact_email()
+                    }
+                
+                students_to_save.append(student_data)
+
         json.dump(students_to_save, file, indent=4)
-        print("Student menu changes saved\n")
-
-
+        print("Student menu changes saved")
 
 def load_students(students, classrooms):
     """Load student data from a JSON file and populate the students list."""
@@ -63,7 +66,6 @@ def load_students(students, classrooms):
         print("No previous student data found. Starting fresh.")
     except Exception as e:
         print(f"An error occurred while loading students: {e}")
-
 
 # Start of kitchen file functions
 

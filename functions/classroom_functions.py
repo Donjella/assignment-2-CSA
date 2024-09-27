@@ -3,25 +3,44 @@ from classes.person import Person  # Import the Person class to use the static m
 def assign_student(classrooms, student, silent=False):
     """Try to assign a student to a valid classroom based on age."""
     age = student.calculate_age()
-    assigned = False  # Track if the student is assigned to a classroom
+    
+    # Initialize to track if the student is assigned
+    assigned = False
 
     # Try to assign the student to a valid classroom
     for classroom in classrooms:
         if classroom.is_valid_for_age(age):
             classroom.students.append(student)  # Add the student to the classroom's student list
             student.assign_classroom(classroom)  # Assign the classroom to the student
+            assigned = True
+            
+            # Generate student ID only after successful assignment
+            student.student_id = student.generate_unique_id()
 
             # Only print the details if silent is False
             if not silent:
                 formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
                 print(f"{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.")
-            assigned = True
+            
             break  # Exit the loop once the student is assigned
 
-    # If the student couldn't be assigned to any classroom
-    if not assigned and not silent:
-        formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
-        print(f"{student.full_name}, {formatted_age} cannot be added to any classroom due to age restriction. Therefore, he is not enrolled.")
+    # If the student couldn't be assigned to any classroom, do not create student attributes
+    if not assigned:
+        # Clear individual attributes
+        student.fname = None
+        student.lname = None
+        student.birthday = None
+        student.allergies = []
+        student.guardian = None
+        student.student_id = None
+
+        if not silent:
+            formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
+            # Check if fname and lname are not None before printing
+            if student.fname is not None and student.lname is not None:
+                print(f"{student.full_name}, {formatted_age} cannot be added to any classroom due to age restriction. Therefore, they are not enrolled.")
+            else:
+                print(f"Student of age: {formatted_age} cannot be added to any classroom due to age restriction. Therefore, they are not enrolled.")
 
 
 def list_students_by_classroom(classrooms):
