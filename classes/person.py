@@ -38,3 +38,8 @@ class Person:
             return f"{years} years old"
         else:
             return f"{years} years and {months} months old"
+
+    # Gettor methods
+
+    def get_allergies(self):
+        return self.allergies 
