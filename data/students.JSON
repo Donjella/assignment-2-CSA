@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "student_id": 8,
+        "fname": "Avaleah",
+        "lname": "Sirada",
+        "birthday": "2023-10-13",
+        "allergies": [
+            "Peanuts"
+        ],
+        "guardian": {
+            "fname": "Brendon",
+            "lname": "Ang",
+            "contact_number": "0",
+            "contact_email": "b@gmail.com"
+        }
+    },
+    {
+        "student_id": 93,
+        "fname": "Siwa",
+        "lname": "Korn",
+        "birthday": "2020-10-14",
+        "allergies": [],
+        "guardian": {
+            "fname": "Nokky",
+            "lname": "Jaitham",
+            "contact_number": "0",
+            "contact_email": "be@gmail.com"
+        }
+    }
+]

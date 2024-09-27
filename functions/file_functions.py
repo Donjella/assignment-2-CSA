@@ -24,6 +24,8 @@ def save_students(students):
             for student in students
         ]
         json.dump(students_to_save, file, indent=4)
+        print("Student menu changes saved\n")
+
 
 
 def load_students(students, classrooms):
@@ -63,14 +65,13 @@ def load_students(students, classrooms):
         print(f"An error occurred while loading students: {e}")
 
 
-
 # Start of kitchen file functions
 
 def save_menu(kitchen):
     """Save the kitchen menu to a JSON file."""
     with open('data/kitchen.json', 'w') as file:
         json.dump(kitchen.menu, file, indent=4)
-    print("Menu saved successfully.")
+    print("Menu saved successfully.\n")
 
 
 def load_menu(kitchen):

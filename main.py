@@ -42,7 +42,7 @@ def create_student_menu():
     print("4. Display Parent/Guardian Details")
     print("5. Save changes and return to Main Menu")
 
-    choice = input("Enter your choice: ")
+    choice = input("\nEnter your choice: ")
     return choice
 
 def create_kitchen_menu():
@@ -53,7 +53,7 @@ def create_kitchen_menu():
     print("4. List Students with Allergies")
     print("5. Save changes and return to Main Menu\n")
 
-    choice = input("Enter your choice: ")
+    choice = input("\nEnter your choice: ")
     return choice
 
 
@@ -68,7 +68,7 @@ while choice != "3":  # Main menu loop, "3" is exit
         while student_choice != "5":  # Loop for the student sub-menu
             student_choice = create_student_menu()
             if student_choice == "1":
-                print("Add Student")
+                print("Add Student\n")
                 add_student(students, classrooms)
             elif student_choice == "2":
                 print("Delete Student")
@@ -79,7 +79,6 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif student_choice == "4":
                 list_guardian_details(students)  # Display parent/guardian details
             elif student_choice == "5":
-                print("Changes saved")
                 save_students(students)  # Call save_students while exiting
             else:
                 print("Invalid choice. Please try again.")

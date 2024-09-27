@@ -8,7 +8,7 @@ def add_student(students, classrooms):
     # Validate first name (fname)
     while True:
         try:
-            fname = input("Enter student's first name: ")
+            fname = input("Enter student's first name: ").strip().capitalize()
             # Check for consecutive hyphens first
             if '--' in fname:
                 raise ValueError("First name cannot contain consecutive hyphens ('--').")
@@ -19,21 +19,30 @@ def add_student(students, classrooms):
                 raise ValueError("First name should only contain alphabets. Hyphens ('-') are allowed.")
         except ValueError as e:
             print(e)
+        except (KeyboardInterrupt, EOFError):
+            print("\nInput interrupted.")
+            return  
 
     # Validate last name (lname)
     while True:
         try:
-            lname = input("Enter student's last name: ")
-            # Allow alphabets and hyphen only
-            if lname.replace('-', '').isalpha():
+            lname = input("Enter student's last name: ").strip().capitalize()
+            # Check for consecutive hyphens first
+            if '--' in lname:
+                raise ValueError("Last name cannot contain consecutive hyphens ('--').")
+            # Allow alphabets and hyphens only
+            elif lname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
                 raise ValueError("Last name should only contain alphabets. Hyphens ('-') are allowed.")
         except ValueError as e:
             print(e)
+        except (KeyboardInterrupt, EOFError):
+            print("\nInput interrupted.")
+            return  
 
 
-    # Validate birthday input with try-except block
+    # Validate birthday input with try...except block
     while True:
         birthday = input("Enter student's birthday (YYYY-MM-DD): ")
         try:
@@ -46,45 +55,84 @@ def add_student(students, classrooms):
     # Initialize an empty list for allergies
     allergies = []
 
+    # Validate if the student has allergies
     while True:
         has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
-        if has_allergy in ['yes', 'no']:
+        if has_allergy in ['yes', 'y', 'no', 'n']:
             break  # Valid input, exit loop
         else:
-            print("Please enter 'yes' or 'no'.")
+            print("Please enter a valid answer - 'yes', 'y', 'no', or 'n'.")
 
-    if has_allergy == 'yes':
+    # If the student has allergies, ask for each allergy
+    if has_allergy in ['yes', 'y']:
         while True:
             # Get the first allergy
             allergy = input("Enter the allergy: ").strip().capitalize()
             allergies.append(allergy)
 
             # Ask if there are more allergies
-            more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
+            while True:
+                more_allergies = input("Does the student have any more allergies? (yes/no): ").strip().lower()
+                if more_allergies in ['yes', 'y', 'no', 'n']:
+                    break  # Valid input, exit loop
+                else:
+                    print("Please enter a valid answer - 'yes', 'y', 'no', or 'n'.")
 
-            if more_allergies != 'yes':
-                break  # Exit the loop if there are no more allergies
+            # Exit the loop if there are no more allergies
+            if more_allergies in ['no', 'n']:
+                break
 
     # Collect guardian details
     print("\nEnter parent/guardian information:")
 
     # Validate guardian first name and last name
     while True:
-        guardian_fname = input("Enter guardian's first name: ")
-        guardian_lname = input("Enter guardian's last name: ")
+        try:
+            guardian_fname = input("Enter guardian's first name: ").strip().capitalize()
+            # Check for consecutive hyphens
+            if '--' in guardian_fname:
+                raise ValueError("Guardian's first name cannot contain consecutive hyphens ('--').")
+            # Allow alphabets and hyphens only
+            elif guardian_fname.replace('-', '').isalpha():
+                break  # Valid input, exit loop
+            else:
+                raise ValueError("Guardian's first name should only contain alphabets. Hyphens ('-') are allowed.")
+        except ValueError as e:
+            print(e)
+        except (KeyboardInterrupt, EOFError):
+            print("\nInput interrupted. Exiting guardian first name entry.")
+            return  # You can choose to exit the function or handle as needed
 
-        if guardian_fname.isalpha() and guardian_lname.isalpha():
-            break  # Valid input, exit loop
-        else:
-            print("First name and last name should only contain alphabets. Please try again.")
+# Validate guardian last name
+    while True:
+        try:
+            guardian_lname = input("Enter guardian's last name: ").strip().capitalize()
+            # Check for consecutive hyphens
+            if '--' in guardian_lname:
+                raise ValueError("Guardian's last name cannot contain consecutive hyphens ('--').")
+            # Allow alphabets and hyphens only
+            elif guardian_lname.replace('-', '').isalpha():
+                break  # Valid input, exit loop
+            else:
+                raise ValueError("Guardian's last name should only contain alphabets. Hyphens ('-') are allowed.")
+        except ValueError as e:
+            print(e)
+        except (KeyboardInterrupt, EOFError):
+            print("\nInput interrupted. Exiting guardian last name entry.")
+            return  
 
     # Validate emergency contact number (should contain only digits)
     while True:
-        contact_number = input("Enter guardian's contact number (numbers only): ")
-        if contact_number.isdigit():
-            break  # Valid input, exit loop
-        else:
-            print("Contact number should only contain numbers. Please try again.")
+        try:
+            contact_number = input("Enter guardian's contact number (numbers only): ").strip()
+            # Check if it's a valid 10-digit Australian number
+            if contact_number.isdigit() and len(contact_number) == 10 and (contact_number.startswith('04') or contact_number.startswith('0')):
+                break  # Valid input, exit loop
+            else:
+                print("Contact number should start with '04' for mobiles or '0' for landlines, and contain exactly 10 digits.")
+        except (KeyboardInterrupt, EOFError):
+            print("\nInput interrupted. Exiting contact number entry.")
+            return 
 
     # Validate emergency contact email
     while True:
@@ -117,7 +165,7 @@ def add_student(students, classrooms):
 def list_guardian_details(students):
     """List parent/guardian details for a specific student by student ID."""
     if not students:
-        print("\nNo students to display.\n")
+        print("\nNo parent/guardian details to display as no students enrolled.\n")
         return
     try:
         # Prompt for a student ID
