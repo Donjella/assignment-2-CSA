@@ -4,12 +4,8 @@ from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_week, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
 from functions.file_functions import save_students, load_students, save_menu, load_menu
-from colored import Style, Fore, Back
-
-# Declaring variables for color palette
-color1: str = f'{Style.underline}{Style.BOLD}{Fore.dark_green}{Back.spring_green_4}'
-color2: str = f"{Style.BOLD}{Fore.WHITE}{Back.dark_blue}" 
-color3: str = f'{Fore.yellow}{Back.black}'
+from constants import color1, color2, color3
+from colored import Style
 
 # Global list for students
 students = []
@@ -38,7 +34,7 @@ def create_menu(menu_title, options, valid_choices):
             for option in options:
                 print(option)
 
-            choice = input("Enter your choice: ")
+            choice = input("Please enter your choice: ")
             if choice in valid_choices:
                 return choice  # Valid input, return choice
             else:
@@ -100,6 +96,7 @@ while choice != "3":  # Main menu loop, "3" is exit
                 print("Delete Student")
                 delete_student(students, classrooms)
             elif student_choice == "3":
+                print(f"\n{color3}Students list{Style.reset}") 
                 list_students_by_classroom(classrooms)  # List students by classroom
                 count_total_students(classrooms)
             elif student_choice == "4":
@@ -127,4 +124,7 @@ while choice != "3":  # Main menu loop, "3" is exit
                 break  # Break the kitchen menu loop to return to the main menu
 
     elif choice == "3":  # Exit option
-        print("\nExiting the application. Goodbye!\n")
+        print(f"{color1}Thanks for using the Childcare Management App!{Style.reset}")
+        print(f"{color1}See you again soon!{Style.reset}\n")
+    
+

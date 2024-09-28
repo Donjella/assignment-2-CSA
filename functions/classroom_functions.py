@@ -57,7 +57,8 @@ def list_students_by_classroom(classrooms):
 def count_total_students(classrooms):
     """Count the total number of students and print it."""
     total_students = sum(len(classroom.students) for classroom in classrooms)
-    print(f"\nTotal number of students: {total_students}")
+    print(f"\nTotal number of students: {total_students}")  
+
 
 def delete_student(students, classrooms):
     """Delete a student by their student_id, handling input and exceptions internally."""
