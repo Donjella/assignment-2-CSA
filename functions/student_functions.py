@@ -79,7 +79,7 @@ def add_student(students, classrooms):
         while True:
             try:
                 # Get the first allergy
-                allergy = input("Enter the allergy: ").strip().capitalize()
+                allergy = input("Enter name of allergy: ").strip().capitalize()
                 
                 # Check that allergy is not empty and contains only alphabetic characters, spaces, or hyphens
                 if allergy and all(char.isalpha() or char in [' ', '-'] for char in allergy):

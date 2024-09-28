@@ -4,7 +4,7 @@ from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_week, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
 from functions.file_functions import save_students, load_students, save_menu, load_menu
-from constants import color1, color2, color3, color5
+from constants import color1, color2, color3, color4, color5
 from colored import Style
 
 # Global list for students
@@ -44,7 +44,7 @@ def create_menu(menu_title, options, valid_choices):
             return valid_choices[-1]  # Return the last valid choice to exit gracefully
 
 def create_main_menu():
-    welcome_message = f"{color1}Welcome to the Childcare Management App{Style.reset}\nWhat would you like to manage?\n"
+    welcome_message = f"{color1}Welcome to the Childcare Management Application{Style.reset}\nWhat would you like to manage?\n"
     return create_menu(
         welcome_message,
         ["1. Students", "2. Kitchen", "3. Exit\n"],
@@ -90,7 +90,7 @@ while choice != "3":  # Main menu loop, "3" is exit
         while student_choice != "5":  # Loop for the student sub-menu
             student_choice = create_student_menu()
             if student_choice == "1":
-                print("Add Student\n")
+                print(f"{color4}Adding Student{Style.reset}\n")
                 add_student(students, classrooms)
             elif student_choice == "2":
                 print("Delete Student")
@@ -124,7 +124,7 @@ while choice != "3":  # Main menu loop, "3" is exit
                 break  # Break the kitchen menu loop to return to the main menu
 
     elif choice == "3":  # Exit option
-        print(f"{color1}Thanks for using the Childcare Management App!{Style.reset}")
+        print(f"\n{color1}Thanks for using the Childcare Management Application.{Style.reset}")
         print(f"{color1}See you again soon!{Style.reset}\n")
     
 

@@ -35,5 +35,32 @@
             "Lunch": null,
             "Afternoon Tea": null
         }
+    },
+    "2": {
+        "Monday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Tuesday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Wednesday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Thursday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        },
+        "Friday": {
+            "Breakfast": null,
+            "Lunch": null,
+            "Afternoon Tea": null
+        }
     }
 }

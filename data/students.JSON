@@ -1,56 +1,46 @@
 [
     {
-        "student_id": 38,
-        "fname": "Avaleah",
-        "lname": "Sirada",
+        "student_id": 14,
+        "fname": "Lionel",
+        "lname": "Messi",
         "birthday": "2023-10-13",
+        "allergies": [],
+        "guardian": {
+            "fname": "Maradona",
+            "lname": "Goat",
+            "contact_number": "0406346691",
+            "contact_email": "maradona@gmail.com"
+        }
+    },
+    {
+        "student_id": 94,
+        "fname": "Cristiano",
+        "lname": "Ronaldo",
+        "birthday": "2022-01-12",
         "allergies": [
-            "Noo"
+            "Peanuts"
         ],
         "guardian": {
-            "fname": "Nokky",
-            "lname": "Jaitham",
-            "contact_number": "0401163578",
-            "contact_email": "nn@gmail.com"
+            "fname": "Alex",
+            "lname": "Ferguson",
+            "contact_number": "0406346692",
+            "contact_email": "ferguson@gmail.com"
         }
     },
     {
-        "student_id": 80,
-        "fname": "Chicken",
-        "lname": "Little",
-        "birthday": "2021-10-14",
-        "allergies": [],
+        "student_id": 11,
+        "fname": "David",
+        "lname": "Beckham",
+        "birthday": "2020-10-13",
+        "allergies": [
+            "Dairy",
+            "Eggs"
+        ],
         "guardian": {
-            "fname": "Bob",
-            "lname": "Builder",
-            "contact_number": "0405678804",
-            "contact_email": "gg@gmail.com"
-        }
-    },
-    {
-        "student_id": 44,
-        "fname": "Third",
-        "lname": "Student",
-        "birthday": "2023-10-22",
-        "allergies": [],
-        "guardian": {
-            "fname": "Haha",
-            "lname": "Hh",
-            "contact_number": "0303023454",
-            "contact_email": "hh@gmail.com"
-        }
-    },
-    {
-        "student_id": 73,
-        "fname": "Please",
-        "lname": "Work",
-        "birthday": "2020-12-10",
-        "allergies": [],
-        "guardian": {
-            "fname": "Yes",
-            "lname": "La",
-            "contact_number": "0405455669",
-            "contact_email": "tt@gmail.com"
+            "fname": "Brooke",
+            "lname": "Beckham",
+            "contact_number": "0401163571",
+            "contact_email": "brooke@gmail.com"
         }
     }
 ]

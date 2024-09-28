@@ -21,7 +21,7 @@ def assign_student(classrooms, student, silent=False):
 
             if not silent:
                 formatted_age = Person.age_in_years_and_months(age)
-                print(f"\n{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.")
+                print(f"\n{color3}{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.{Style.reset}")
             
             break  # Exit the loop once the student is assigned
 
@@ -95,8 +95,8 @@ def delete_student(students, classrooms):
     # Remove the student from the classroom they are assigned to
     if classroom_to_delete_from:
         classroom_to_delete_from.students.remove(student_to_delete)
-        print(f"{student_to_delete.full_name} removed from {classroom_to_delete_from.get_name()}.")
+        print(f"\n{color3}{student_to_delete.full_name} removed from {classroom_to_delete_from.get_name()}{Style.reset}.")
 
     # Remove the student from the global students list
     students.remove(student_to_delete)
-    print(f"Student {student_to_delete.full_name} (ID: {student_to_delete.student_id}) has been deleted.")
+    print(f"{color3}{student_to_delete.full_name} (student ID: {student_to_delete.student_id}) has been deleted from the system.{Style.reset}")
