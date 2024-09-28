@@ -3,6 +3,8 @@ from classes.students import Student  # Import the Student class
 from functions.classroom_functions import assign_student  
 from classes.parent_guardian import ParentGuardian
 
+
+
 def save_students(students):
     with open('data/students.json', 'w') as file:
         students_to_save = []
@@ -27,9 +29,8 @@ def save_students(students):
                     }
                 
                 students_to_save.append(student_data)
-
         json.dump(students_to_save, file, indent=4)
-        print("Student menu changes saved")
+       
 
 def load_students(students, classrooms):
     """Load student data from a JSON file and populate the students list."""
@@ -73,7 +74,7 @@ def save_menu(kitchen):
     """Save the kitchen menu to a JSON file."""
     with open('data/kitchen.json', 'w') as file:
         json.dump(kitchen.menu, file, indent=4)
-    print("Menu saved successfully.\n")
+   
 
 
 def load_menu(kitchen):

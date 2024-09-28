@@ -4,6 +4,12 @@ from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_week, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
 from functions.file_functions import save_students, load_students, save_menu, load_menu
+from colored import Style, Fore, Back
+
+# Declaring variables for color palette
+color1: str = f'{Style.underline}{Style.BOLD}{Fore.dark_green}{Back.spring_green_4}'
+color2: str = f"{Style.BOLD}{Fore.WHITE}{Back.dark_blue}" 
+color3: str = f'{Fore.yellow}{Back.black}'
 
 # Global list for students
 students = []
@@ -42,28 +48,31 @@ def create_menu(menu_title, options, valid_choices):
             return valid_choices[-1]  # Return the last valid choice to exit gracefully
 
 def create_main_menu():
+    welcome_message = f"{color1}Welcome to the Childcare Management App{Style.reset}\nWhat would you like to manage?\n"
     return create_menu(
-        "Welcome to the Childcare Management App\nWhat would you like to manage?",
+        welcome_message,
         ["1. Students", "2. Kitchen", "3. Exit\n"],
         ["1", "2", "3"]
     )
 
 def create_student_menu():
+    student_header = f"{color2}Student Management Menu{Style.reset}\nWhat would you like to do?\n"
     return create_menu(
-        "Student Management Menu:",
+        student_header,
         [
             "1. Add Student",
             "2. Delete Student",
             "3. List Students",
             "4. Display Parent/Guardian Details",
-            "5. Save changes and return to Main Menu"
+            "5. Save changes and return to Main Menu\n"
         ],
         ["1", "2", "3", "4", "5"]
     )
 
 def create_kitchen_menu():
+    kitchen_header = f"{color2}Kitchen Management Menu{Style.reset}\nWhat would you like to do?\n"
     return create_menu(
-        "Kitchen Management Menu:",
+        kitchen_header,
         [
             "1. Add/Update Menu for the Day",
             "2. Delete Menu for the Day",
@@ -96,7 +105,8 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif student_choice == "4":
                 list_guardian_details(students)  # Display parent/guardian details
             elif student_choice == "5":
-                save_students(students)  # Call save_students while exiting
+                save_students(students)# Call save_students while exiting
+                print(f"\n{color3}Student menu changes successfully saved{Style.reset}")  
 
     elif choice == "2":  # Kitchen menu
         kitchen_choice = ""
@@ -113,6 +123,7 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif kitchen_choice == "5":
                 print("Save changes and return to Main Menu")
                 save_menu(kitchen)  # Call save_menu to save the kitchen data before exiting
+                print(f"\n{color3}Kitchen changes successfully saved{Style.reset}") 
                 break  # Break the kitchen menu loop to return to the main menu
 
     elif choice == "3":  # Exit option
