@@ -1,4 +1,6 @@
 from classes.person import Person  # Import the Person class to use the static method
+from constants import color3, color4
+from colored import Style
 
 def assign_student(classrooms, student, silent=False):
     """Try to assign a student to a valid classroom based on age."""
@@ -14,17 +16,15 @@ def assign_student(classrooms, student, silent=False):
             student.assign_classroom(classroom)  # Assign the classroom to the student
             assigned = True
             
-            # Generate student ID only after successful assignment
-            student.student_id = student.generate_unique_id()
+            # Remove this line, as student_id should not be generated again
+            # student.student_id = student.generate_unique_id()  
 
-            # Only print the details if silent is False
             if not silent:
-                formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
-                print(f"{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.")
+                formatted_age = Person.age_in_years_and_months(age)
+                print(f"\n{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.")
             
             break  # Exit the loop once the student is assigned
 
-    # If the student couldn't be assigned to any classroom, do not create student attributes
     if not assigned:
         # Clear individual attributes
         student.fname = None
@@ -32,12 +32,10 @@ def assign_student(classrooms, student, silent=False):
         student.birthday = None
         student.allergies = []
         student.guardian = None
-        student.student_id = None
 
         if not silent:
-            formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
-            # Check if fname and lname are not None before printing
-            if student.fname is not None and student.lname is not None:
+            formatted_age = Person.age_in_years_and_months(age)
+            if student.fname and student.lname:
                 print(f"{student.full_name}, {formatted_age} cannot be added to any classroom due to age restriction. Therefore, they are not enrolled.")
             else:
                 print(f"Student of age: {formatted_age} cannot be added to any classroom due to age restriction. Therefore, they are not enrolled.")
@@ -46,18 +44,18 @@ def assign_student(classrooms, student, silent=False):
 def list_students_by_classroom(classrooms):
     for classroom in classrooms:  # Loop through each classroom
         if classroom.students:  # Check if the classroom has any students
-            print(f"\nStudents in {classroom.get_name()}:")
+            print(f"\n{color4}Students in {classroom.get_name()}{Style.reset}:")
             for student in classroom.students:  # Loop through each student in the classroom
                 age = student.calculate_age()
                 formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
                 print(f"{student.full_name}, {formatted_age} with student ID {student.get_formatted_id()}")
         else:
-            print(f"\nNo students in {classroom.get_name()}.")
+            print(f"\n{color4}No students in {classroom.get_name()}.{Style.reset}")
 
 def count_total_students(classrooms):
     """Count the total number of students and print it."""
     total_students = sum(len(classroom.students) for classroom in classrooms)
-    print(f"\nTotal number of students: {total_students}")  
+    print(f"\n{color3}Total number of students: {total_students}{Style.reset}")  
 
 
 def delete_student(students, classrooms):
@@ -68,6 +66,12 @@ def delete_student(students, classrooms):
         student_id = int(input("Enter the student ID to delete: "))  # Convert input to int
     except ValueError:
         print("Invalid input. Please enter a valid student ID (integer).")
+        return
+    except EOFError:
+        print("\nInput interrupted. Returning to the previous menu.")
+        return
+    except Exception as e:  
+        print(f"An unexpected error occurred: {e}")
         return
     
     # Find the student in the classrooms' students list

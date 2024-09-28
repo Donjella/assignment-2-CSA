@@ -1,6 +1,6 @@
 [
     {
-        "student_id": 46,
+        "student_id": 38,
         "fname": "Avaleah",
         "lname": "Sirada",
         "birthday": "2023-10-13",
@@ -12,6 +12,45 @@
             "lname": "Jaitham",
             "contact_number": "0401163578",
             "contact_email": "nn@gmail.com"
+        }
+    },
+    {
+        "student_id": 80,
+        "fname": "Chicken",
+        "lname": "Little",
+        "birthday": "2021-10-14",
+        "allergies": [],
+        "guardian": {
+            "fname": "Bob",
+            "lname": "Builder",
+            "contact_number": "0405678804",
+            "contact_email": "gg@gmail.com"
+        }
+    },
+    {
+        "student_id": 44,
+        "fname": "Third",
+        "lname": "Student",
+        "birthday": "2023-10-22",
+        "allergies": [],
+        "guardian": {
+            "fname": "Haha",
+            "lname": "Hh",
+            "contact_number": "0303023454",
+            "contact_email": "hh@gmail.com"
+        }
+    },
+    {
+        "student_id": 73,
+        "fname": "Please",
+        "lname": "Work",
+        "birthday": "2020-12-10",
+        "allergies": [],
+        "guardian": {
+            "fname": "Yes",
+            "lname": "La",
+            "contact_number": "0405455669",
+            "contact_email": "tt@gmail.com"
         }
     }
 ]

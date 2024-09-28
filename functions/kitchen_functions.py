@@ -1,15 +1,18 @@
+from colored import Style
+from constants import color5
+
 def add_menu_for_day(kitchen):
     """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
     try:
         # Prompt for week number
         week_input = input("Enter the week number (1-52): ").strip()
         if not week_input:
-            raise ValueError("Week number cannot be empty.")
+            raise ValueError(f"{color5}Week number cannot be empty.{Style.reset}")
         week = int(week_input)
 
         # Ensure week is within valid range (1-52)
         if week < 1 or week > 52:
-            raise ValueError("Please enter a valid week number between 1 and 52.\n")
+            raise ValueError(f"{color5}Please enter a valid week number between 1 and 52.{Style.reset}\n")
 
         # Day mapping
         day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday"}
@@ -17,23 +20,23 @@ def add_menu_for_day(kitchen):
         # Prompt for day of the week
         day_input = input("Enter the day of the week (1 = Monday,..,5 = Friday): ").strip()
         if not day_input:
-            raise ValueError("Day cannot be empty.\n")
+            raise ValueError(f"{color5}Day cannot be empty.{Style.reset}\n")
         day = int(day_input)
         
         if day not in day_map:
-            raise ValueError("Please enter a number between 1 and 5 (weekdays only).\n")
+            raise ValueError(f"{color5}Please enter a number between 1 and 5 (weekdays only).{Style.reset}\n")
         day = day_map[day]
 
         print(f"Adding menu for Week {week}, Day: {day}")
 
     except ValueError as error:
-        print(f"{error}")
+        print(f"{color5}{error}{Style.reset}")
         return  
     except (EOFError, KeyboardInterrupt):
-        print("\nInput interrupted.")
+        print(f"\n{color5}Input interrupted.{Style.reset}")
         return
     except Exception as e:
-        print("\nAn unexpected error occurred")
+        print(f"\n{color5}An unexpected error occurred{Style.reset}")
         return
 
     # Ask the user to input dishes for each meal
@@ -42,10 +45,10 @@ def add_menu_for_day(kitchen):
         lunch = input("Enter the lunch dish: ").strip().title()
         afternoon_tea = input("Enter the afternoon tea dish: ").strip().title()
     except (EOFError, KeyboardInterrupt):
-        print("\nInput interrupted.")
+        print(f"\n{color5}Input interrupted.{Style.reset}")
         return
     except Exception as e:
-        print("\nAn unexpected error occurred")
+        print(f"\n{color5}An unexpected error occurred{Style.reset}")
         return
 
     week_str = str(week)
@@ -68,13 +71,13 @@ def list_menu_for_week(kitchen):
     try:
         week = int(input("Enter the week number: "))
     except ValueError:
-        print("Invalid input. Please enter a valid week number (integer).")
+        print(f"{color5}Invalid input. Please enter a valid week number (integer).{Style.reset}")
         return
     except (EOFError, KeyboardInterrupt):
-        print("\nInput interrupted.")
+        print(f"\n{color5}Input interrupted.{Style.reset}")
         return
     except Exception as e:
-        print("\nAn unexpected error occurred")
+        print(f"\n{color5}An unexpected error occurred{Style.reset}")
         return
 
     week_str = str(week)
@@ -112,13 +115,13 @@ def delete_menu_for_day(kitchen):
     try:
         week = int(input("Enter the week number: "))
     except ValueError:
-        print("Invalid input. Please enter a valid week number (integer).")
+        print(f"{color5}Invalid input. Please enter a valid week number (integer).{Style.reset}")
         return
     except (EOFError, KeyboardInterrupt):
-        print("\nInput interrupted.")
+        print(f"\n{color5}Input interrupted.{Style.reset}")
         return
     except Exception as e:
-        print("\nAn unexpected error occurred")
+        print(f"\n{color5}An unexpected error occurred{Style.reset}")
         return
 
     day_map = {
@@ -135,13 +138,13 @@ def delete_menu_for_day(kitchen):
             raise ValueError
         day = day_map[day_input]
     except ValueError:
-        print("Invalid input. Please enter a number between 1 and 5 for weekdays.")
+        print(f"{color5}Invalid input. Please enter a number between 1 and 5 for weekdays.{Style.reset}")
         return
     except (EOFError, KeyboardInterrupt):
-        print("\nInput interrupted.")
+        print(f"\n{color5}Input interrupted.{Style.reset}")
         return
     except Exception as e:
-        print("\nAn unexpected error occurred")
+        print(f"\n{color5}An unexpected error occurred{Style.reset}")
         return
 
     week_str = str(week)

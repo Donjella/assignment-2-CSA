@@ -4,7 +4,7 @@ from classes.classrooms import students, Classroom
 from classes.kitchen import Kitchen
 from functions.kitchen_functions import list_menu_for_week, add_menu_for_day, list_students_with_allergies, delete_menu_for_day
 from functions.file_functions import save_students, load_students, save_menu, load_menu
-from constants import color1, color2, color3
+from constants import color1, color2, color3, color5
 from colored import Style
 
 # Global list for students
@@ -38,7 +38,7 @@ def create_menu(menu_title, options, valid_choices):
             if choice in valid_choices:
                 return choice  # Valid input, return choice
             else:
-                print(f"Invalid choice. Please enter a number between {valid_choices[0]} and {valid_choices[-1]}.")
+                print(f"{color5}Invalid choice. Please enter a number between {valid_choices[0]} and {valid_choices[-1]}.{Style.reset}")
         except (EOFError, KeyboardInterrupt):
             print("\nInput interrupted. Returning to Main Menu.")
             return valid_choices[-1]  # Return the last valid choice to exit gracefully

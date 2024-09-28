@@ -3,6 +3,8 @@ from functions.classroom_functions import assign_student
 from classes.students import Student
 from classes.parent_guardian import ParentGuardian  # Import the ParentGuardian class
 from datetime import datetime
+from colored import Style
+from constants import color4, color5
 
 def add_student(students, classrooms):
     # Validate first name (fname)
@@ -18,9 +20,9 @@ def add_student(students, classrooms):
             else:
                 raise ValueError("First name should only contain alphabets. Hyphens ('-') are allowed.")
         except ValueError as e:
-            print(e)
+            print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted.")
+            print(f"\n{color5}Input interrupted. Returning to previous menu.{Style.reset}")
             return  
 
     # Validate last name (lname)
@@ -29,16 +31,16 @@ def add_student(students, classrooms):
             lname = input("Enter student's last name: ").strip().capitalize()
             # Check for consecutive hyphens first
             if '--' in lname:
-                raise ValueError("Last name cannot contain consecutive hyphens ('--').")
+                raise ValueError(f"{color5}Last name cannot contain consecutive hyphens ('--').{Style.reset}")
             # Allow alphabets and hyphens only
             elif lname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
-                raise ValueError("Last name should only contain alphabets. Hyphens ('-') are allowed.")
+                raise ValueError(f"{color5}Last name should only contain alphabets. Hyphens ('-') are allowed.{Style.reset}")
         except ValueError as e:
-            print(e)
+            print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted.")
+            print(f"\n{color5}Input interrupted. Returning to previous menu.{Style.reset}")
             return  
 
     # Validate birthday input with try...except block
@@ -54,18 +56,23 @@ def add_student(students, classrooms):
                 return  # Exit the function without collecting more input
             break
         except ValueError:
-            print("Invalid date format or date out of range. Please enter valid date in the format YYYY-MM-DD.")
+            print(f"{color5}Invalid date format or date out of range. Please enter valid date in the format YYYY-MM-DD.{Style.reset}")
 
      # Initialize an empty list for allergies
     allergies = []
 
     # Validate if the student has allergies
     while True:
-        has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
-        if has_allergy in ['yes', 'y', 'no', 'n']:
-            break  # Valid input, exit loop
-        else:
-            print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
+        try:
+            has_allergy = input("Does the student have any allergies? (yes/no): ").strip().lower()
+            if has_allergy in ['yes', 'y', 'no', 'n']:
+                break  # Valid input, exit loop
+            else:
+                print(f"{color5}Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.{Style.reset}")
+        except EOFError:
+            print(f"\n{color5}Input interrupted. Returning to previous menu.{Style.reset}")
+            return
+            
 
     # If the student has allergies, ask for each allergy
     if has_allergy in ['yes', 'y']:
@@ -78,7 +85,7 @@ def add_student(students, classrooms):
                 if allergy and all(char.isalpha() or char in [' ', '-'] for char in allergy):
                     allergies.append(allergy)
                 else:
-                    raise ValueError("Allergy should only contain alphabetic characters, spaces, or hyphens. Please try again.")
+                    raise ValueError(f"{color5}Allergy should only contain alphabetic characters, spaces, or hyphens. Please try again.{Style.reset}")
 
                 # Ask if there are more allergies
                 while True:
@@ -86,13 +93,17 @@ def add_student(students, classrooms):
                     if more_allergies in ['yes', 'y', 'no', 'n']:
                         break  # Valid input, exit loop
                     else:
-                        print("Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.")
+                        print(f"{color5}Please enter a valid answer - 'yes' or 'y' and 'no' or 'n'.{Style.reset}")
 
                 # Exit the loop if there are no more allergies
                 if more_allergies in ['no', 'n']:
                     break
             except ValueError as e:
-                print(e)
+                print(f"{color5}{e}{Style.reset}")
+            except EOFError:
+                print(f"\n{color5}Input interrupted. Returning to previous menu.{Style.reset}")
+                return
+        
 
     # Collect guardian details
     print("\nEnter parent/guardian information:")
@@ -110,10 +121,10 @@ def add_student(students, classrooms):
             else:
                 raise ValueError("Guardian's first name should only contain alphabets. Hyphens ('-') are allowed.")
         except ValueError as e:
-            print(e)
+            print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted.")
-            return  # You can choose to exit the function or handle as needed
+            print(f"\n{color5}Input interrupted. Returning to previous menu.{Style.reset}")
+            return  
 
 # Validate guardian last name
     while True:
@@ -121,16 +132,16 @@ def add_student(students, classrooms):
             guardian_lname = input("Enter guardian's last name: ").strip().capitalize()
             # Check for consecutive hyphens
             if '--' in guardian_lname:
-                raise ValueError("Guardian's last name cannot contain consecutive hyphens ('--').")
+                raise ValueError(f"{color5}Guardian's last name cannot contain consecutive hyphens ('--').{Style.reset}")
             # Allow alphabets and hyphens only
             elif guardian_lname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
-                raise ValueError("Guardian's last name should only contain alphabets. Hyphens ('-') are allowed.")
+                raise ValueError(f"{color5}Guardian's last name should only contain alphabets. Hyphens ('-') are allowed.{Style.reset}")
         except ValueError as e:
-            print(e)
+            print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted.")
+            print(f"{color5}\nInput interrupted. Returning to previous menu.{Style.reset}")
             return  
 
     # Validate emergency contact number (should contain only digits and check length)
@@ -141,10 +152,10 @@ def add_student(students, classrooms):
             if contact_number.isdigit() and len(contact_number) == 10 and (contact_number.startswith('04') or contact_number.startswith('0')):
                 break  # Valid input, exit loop
             else:
-                print("Contact number should start with '04' for mobiles or '0' for landlines, and contain exactly 10 digits.")
-                print("International contacts with '+' area codes are not accepted\n")
+                print(f"{color5}Contact number should start with '04' for mobiles or '0' for landlines, and contain exactly 10 digits.{Style.reset}")
+                print(f"{color5}International contacts with '+' area codes are not accepted{Style.reset}\n")
         except (KeyboardInterrupt, EOFError):
-            print("\nInput interrupted.")
+            print(f"{color5}\nInput interrupted. Returning to previous menu.{Style.reset}")
             return 
 
     # Validate emergency contact email
@@ -154,22 +165,22 @@ def add_student(students, classrooms):
             
             # Check for spaces
             if " " in contact_email:
-                raise ValueError("Email address should not contain spaces.")
+                raise ValueError(f"{color5}Email address should not contain spaces.{Style.reset}")
             
             # Check for a single '@'
             if contact_email.count("@") != 1:
-                raise ValueError("Email address should contain exactly one '@' symbol.")
+                raise ValueError(f"{color5}Email address should contain exactly one '@' symbol.{Style.reset}")
             
             # If all checks pass, break the loop
             break
             
         except ValueError as e:
-            print(e)
+            print(f"{color5}{e}{Style.reset}")
         except EOFError:
-            print("\nInput interrupted.")
+            print(f"\n{color5}Input interrupted. Returning to previous menu.{Style.reset}")
             return
         except Exception:
-            print("Please enter a valid email.")
+            print(f"{color5}Please enter a valid email.{Style.reset}")
 
     # Create the parent/guardian object
     guardian = ParentGuardian(guardian_fname, guardian_lname, contact_number, contact_email)
@@ -200,7 +211,7 @@ def list_guardian_details(students):
         # Prompt for a student ID
         student_id = int(input("\nEnter the student ID to view guardian details: "))
     except ValueError:
-        print("Invalid input. Please enter a valid numeric student ID.")
+        print(f"{color5}Invalid input. Please enter a valid numeric student ID.{Style.reset}")
         return
 
     # Find the student by ID
@@ -210,7 +221,7 @@ def list_guardian_details(students):
     if student:
         guardian = student.guardian
         if guardian:
-            print(f"\nStudent: {student.full_name} (ID: {student.get_formatted_id()})")
+            print(f"\n{color4}Student: {student.full_name} (ID: {student.get_formatted_id()}){Style.reset}")
             print(f"  Guardian Name: {guardian.full_name}")
             print(f"  Contact Number: {guardian.contact_number}")
             print(f"  Contact Email: {guardian.contact_email}\n")

@@ -38,7 +38,6 @@ def load_students(students, classrooms):
         with open('data/students.json', 'r') as file:
             students_data = json.load(file)
             for student_dict in students_data:
-                # Recreate ParentGuardian object from the loaded data
                 guardian_dict = student_dict.get('guardian', {})
                 guardian = ParentGuardian(
                     fname=guardian_dict.get('fname'),
@@ -46,27 +45,27 @@ def load_students(students, classrooms):
                     contact_number=guardian_dict.get('contact_number'),
                     contact_email=guardian_dict.get('contact_email')
                 )
-                # Recreate Student object from the loaded data
+                
+                # Create Student with the student_id from the loaded data
                 student = Student(
                     fname=student_dict['fname'],
                     lname=student_dict['lname'],
                     birthday=student_dict['birthday'],
-                    allergies=student_dict.get('allergies', [])
+                    allergies=student_dict.get('allergies', []),
+                    student_id=student_dict['student_id']  # Set the ID directly from loaded data
                 )
-            
-                student.student_id = student_dict['student_id']  # Restore the student ID
-                student.guardian = guardian  # Associate the guardian with the student
                 
-                students.append(student)
+                student.guardian = guardian  # Associate the guardian with the student
+                students.append(student)  # Append to the global students list
                 
                 # Assign the student to the correct classroom based on age
-                # using silent=True to not print assigned list of students on startup
-                assign_student(classrooms, student, silent=True)
+                assign_student(classrooms, student, silent=True)  # This should not change student_id
 
     except FileNotFoundError:
         print("No previous student data found. Starting fresh.")
     except Exception as e:
         print(f"An error occurred while loading students: {e}")
+
 
 # Start of kitchen file functions
 
