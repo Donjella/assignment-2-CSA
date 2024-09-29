@@ -46,6 +46,9 @@ class Student(Person):
     def get_formatted_id(self):
         """Return the student ID formatted as a two-digit string."""
         return f"{self.student_id:02}"
+    
+    def get_classroom_name(self):
+        return self.classroom.name
 
     def assign_classroom(self, classroom):
         self.classroom = classroom

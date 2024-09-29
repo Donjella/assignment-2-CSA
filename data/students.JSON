@@ -42,5 +42,20 @@
             "contact_number": "0401163571",
             "contact_email": "brooke@gmail.com"
         }
+    },
+    {
+        "student_id": 41,
+        "fname": "Michael",
+        "lname": "Ballack",
+        "birthday": "2021-01-01",
+        "allergies": [
+            "Eggs"
+        ],
+        "guardian": {
+            "fname": "Michelle",
+            "lname": "Ballack",
+            "contact_number": "0401234569",
+            "contact_email": "michelle@gmail.com"
+        }
     }
 ]

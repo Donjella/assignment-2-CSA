@@ -117,7 +117,7 @@ while choice != "3":  # Main menu loop, "3" is exit
             elif kitchen_choice == "3":
                 list_menu_for_week(kitchen)  # List the menu for the week
             elif kitchen_choice == "4":
-                list_students_with_allergies(students)  # List students with allergies
+                list_students_with_allergies(classrooms)  # List students with allergies
             elif kitchen_choice == "5":
                 print("Save changes and return to Main Menu")
                 save_menu(kitchen)  # Call save_menu to save the kitchen data before exiting

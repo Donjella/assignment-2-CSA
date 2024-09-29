@@ -100,16 +100,22 @@ def list_menu_for_week(kitchen):
         else:
             print(f"No menu found for {day}.")
 
-def list_students_with_allergies(students):
-    students_with_allergies = [student for student in students if student.allergies]
+def list_students_with_allergies(classrooms):
+    print(f"\n{color3}Student allergy list{Style.reset}") 
     
-    if not students_with_allergies:
-        print("No students with allergies.\n")
-    else:
-        print("\nStudents with allergies:")
-        for student in students_with_allergies:
-            allergies = ', '.join(student.allergies)
-            print(f"{student.full_name} (Student ID: {student.get_formatted_id()}) has the following allergies: {allergies}\n")
+    for classroom in classrooms:  # Loop through each classroom
+        # Get students with allergies in the current classroom
+        students_with_allergies = [student for student in classroom.students if student.allergies]
+        
+        if students_with_allergies:  # Check if any students in the classroom have allergies
+            print(f"\n{color4}Classroom: {classroom.get_name()}{Style.reset}")
+            
+            # Loop through each student with allergies and print details
+            for student in students_with_allergies:
+                allergies = ', '.join(student.allergies)
+                print(f"  {student.full_name} (Student ID: {student.get_formatted_id()}) has the following allergies: {allergies}")
+        else:
+            print(f"\n{color4}No students with allergies in {classroom.get_name()}.{Style.reset}")
 
 def delete_menu_for_day(kitchen):
     try:
