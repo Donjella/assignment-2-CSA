@@ -102,7 +102,7 @@ A lists of student categorised in their respective classrooms (Babies, Toddlers 
 
 ![screenshot for list students](docs/screenshots/list_students.png)
 
-### Choice 4 - Display Parent/Guardian Details*
+### Choice 4 - Display Parent/Guardian Details
 
 You will be prompted to enter student ID to view the particular student's parent/guardian details:
 
@@ -116,6 +116,10 @@ Upon entering a valid (existing student ID associated with a student enrolled in
 
 ### Important:
 ***To successfully save changes*** made to students (Addition or deletion of student) so that it will load the changes when you exit the student management menu or start the application again, ***you have to choose option 5 - save changes and return to the main menu***.  
+
+![screenshot for display save student menu](docs/screenshots/save_student_menu.png)
+
+Ensure you ***see the confirmation prompt in yellow and black*** that changes in the student menu is successfully saved to confirm you have exited the student management menu and changes are saved.
 
 ---
 
