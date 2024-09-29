@@ -5,6 +5,33 @@ This is a terminal-based command-line interface (CLI) application created to man
 
 ## Table of Contents
 
+1. [Application Setup](#application-setup)  
+   - [Setting Up the Environment](#setting-up-the-environment)  
+   - [Third-party Software Licensing and Security](#third-party-software-licensing-and-security)  
+      - [License Compatibility](#license-compatibility)  
+      - [Security Impact Overview](#security-impact-overview)  
+      - [Important Notes](#important-notes)  
+
+2. [Using the Application](#using-the-application)  
+   - [Run the Application](#running-the-application)  
+   - [Main Menu](#main-menu)  
+   - [Option 1 - Student Management Menu](#option-1---student-management-menu)  
+     - [Choice 1 - Add Student](#choice-1---add-student)  
+     - [Choice 2 - Delete Student](#choice-2---delete-student)  
+     - [Choice 3 - List Students](#choice-3---list-students)  
+     - [Choice 4 - Display Parent/Guardian Details](#choice-4---display-parentguardian-details)  
+     - [Choice 5 - Save Changes and Return to the Main Menu](#choice-5---save-changes-and-return-to-the-main-menu)  
+   - [Option 2 - Kitchen Management Menu](#option-2---kitchen-management-menu)  
+      - [Choice 1 - Add/Update Menu for the Day](#choice-1---addupdate-menu-for-the-day)  
+      - [Choice 2 - Delete Menu for the Day](#choice-2---delete-menu-for-the-day)  
+      - [Choice 3 - List Menu for the Week](#choice-3---list-menu-for-the-week)  
+      -  [Choice 4 - List Students with Allergies](#choice-4---list-students-with-allergies)  
+      -  [Choice 5 - Save Changes and Return to the Main Menu](#choice-5---save-changes-and-return-to-the-main-menu)  
+   - [Option 3 - Exit](#option-3---exit)  
+
+3. [Testing](#testing)
+
+
 ## Application Setup
 Users can clone or fork the code of the application from its [GitHub repository](https://github.com/Donjella/assignment-2-CSA).
 
@@ -17,6 +44,8 @@ The application uses both in-built and external libraries:
 5. [Pytest Mock](https://pytest-mock.readthedocs.io/en/latest/) 
 6. [Python datetime module](https://docs.python.org/3/library/datetime.html) 
 7. [Python Random Module](https://docs.python.org/3/library/random.html) 
+
+More information on their licensing, security and compatibility impact can be viewed in the Third-party software licensing and security section.
 
 ### Setting Up the Environment
 1. Application is written in **Python Version 3.12.5**. Hence, please ensure you have Python 3.12.5 or later installed.
@@ -99,7 +128,7 @@ All third-party software used in this application has been chosen for their reli
 
 Handling student and parent/guardian information is generally considered sensitive*, especially when it includes:
 
-***Personal Identifiable Information***: This includes student names, ages, birthdays, addresses, and parent/guardian contact details (phone numbers and email addresses).  
+***Personal Identifiable Information***: This includes student names, ages, birthdays, and parent/guardian contact details (phone numbers and email addresses).  
 ***Health Information***: Information such as allergies or medical conditions, which is also considered sensitive data under many privacy laws.
 
 ([*Privacy law in Australia](https://hallandwilcox.com.au/news/overview-of-privacy-law-in-australia/) - ‘Sensitive information’ is defined under the Privacy Act and includes information about an individual’s racial or ethnic origin, political opinions, professional or political or religious affiliations or memberships, sexual orientation or practices, criminal record, health, genetics and/or biometrics.  
@@ -115,7 +144,7 @@ Therefore, while the application currently handles this data safely as an intern
 
 
 ## Using the application 
-### Running the application
+### Run the application
 
 Navigate to the root directory of the project (where main.py is located).
 ```bash
