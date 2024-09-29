@@ -204,7 +204,7 @@ Upon entering a valid (existing student ID associated with a student enrolled in
 
 ### Choice 3 - List Students
 
-3 separate tables will be printed showing student name, ID, age containing in their respective classroom(Individual classroom is contained in each table)
+3 separate tables for 3 individual classrooms will be printed showing students enrolled in their respective classrooms with the student's name, ID, and age shown in the table.
 
 ![screenshot for list students](docs/screenshots/list_students.png)
 
