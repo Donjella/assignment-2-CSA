@@ -1,5 +1,5 @@
 from classes.person import Person  # Import the Person class to use the static method
-from constants import color3, color4
+from constants import color3, color4, color5
 from colored import Style
 
 def assign_student(classrooms, student, silent=False):
@@ -65,13 +65,13 @@ def delete_student(students, classrooms):
         # Ask for student ID to delete and ensure it's an integer
         student_id = int(input("Enter the student ID to delete: "))  # Convert input to int
     except ValueError:
-        print("Invalid input. Please enter a valid student ID (integer).")
+        print(f"{color5}Invalid input. Please enter a valid student ID (integer).{Style.reset}")
         return
     except EOFError:
-        print("\nInput interrupted. Returning to the previous menu.")
+        print(f"\n{color5}Input interrupted. Returning to the previous menu.{Style.reset}")
         return
     except Exception as e:  
-        print(f"An unexpected error occurred: {e}")
+        print(f"{color5}An unexpected error occurred: {e}{Style.reset}")
         return
     
     # Find the student in the classrooms' students list

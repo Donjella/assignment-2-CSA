@@ -54,22 +54,16 @@ python3 main.py
 Once application starts, you will be greeted with a welcome message, 2 management options to choose from (students or kitchen) and a third option to exit the application itself.
 
 1. Students  
-
 2. Kitchen
-
 3. Exit
 
 ### Option 1 - Student Management Menu
 Choosing option 1 will lead you to the Student Management Menu
 
 1. Add Student 
-
 2. Delete Student
-
 3. List Students
-
 4. Display Parent/Guardian Details
-
 5. Save changes or/and return to the main menu
 
 ### Choice 1 - Add Student
@@ -90,7 +84,7 @@ You will be prompted one question at a time asking for the following input:
 
 Upon successfully entering all details above, you will be greeted with a confirmation message in yellow with black background that student is assigned to his/her respective classroom base on his/her age.
 
-![Add Student](screenshots/assign_student.png)
+![screenshot for add student](docs/screenshots/assign_student.png)
 
 ### Choice 2 - Delete Student
 
@@ -100,9 +94,12 @@ You will be prompted to enter student ID of student to be deleted:
 
 Upon entering a valid (existing student ID associated with a student enrolled in a class), a confirmation of deletion of student will be printed.
 
+
 ### Choice 3 - List Students
 
-A lists of student categorised in their respective classrooms (Babies, Toddlers and Kindergarten) will be printed with their first and last names, age and student ID.
+A lists of student categorised in their respective classrooms (Babies, Toddlers and Kindergarten) will be printed with their first and last names, age and student ID. Total number of students enrolled in the childcare service will also be shown.
+
+![screenshot for list students](docs/screenshots/list_students.png)
 
 ### Choice 4 - Display Parent/Guardian Details*
 
@@ -123,13 +120,9 @@ Upon entering a valid (existing student ID associated with a student enrolled in
 Choosing option 2 will lead you to the kitchen Management Menu
 
 1. Add/Update menu for the day
-
 2. Delete menu for the Day
-
 3. List menu for the Week
-
 4. List students with allergies
-
 5. Save changes or/and return to the main menu
 
 ### Choice 1 - Add/Update menu for the day
@@ -142,9 +135,7 @@ You will be prompted one question at a time asking for the following input:
 Once successful, you will be prompted for:
 
 - Enter name of breakfast dish:
-
 - Enter name of lunch dish:
-
 - Enter name of afternoon tea dish:   
 
 Upon successfully entering the information above, you will receive a confirmation stating menu for selected day in selected week is UPDATED.

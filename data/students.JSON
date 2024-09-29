@@ -42,5 +42,20 @@
             "contact_number": "0401163571",
             "contact_email": "brooke@gmail.com"
         }
+    },
+    {
+        "student_id": 92,
+        "fname": "Mo",
+        "lname": "Salah",
+        "birthday": "2021-12-30",
+        "allergies": [
+            "Shellfish"
+        ],
+        "guardian": {
+            "fname": "Aisha",
+            "lname": "Salah",
+            "contact_number": "0406346695",
+            "contact_email": "aisha@hotmail.com"
+        }
     }
 ]

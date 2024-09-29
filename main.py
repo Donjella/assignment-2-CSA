@@ -93,7 +93,7 @@ while choice != "3":  # Main menu loop, "3" is exit
                 print(f"{color4}Adding Student{Style.reset}\n")
                 add_student(students, classrooms)
             elif student_choice == "2":
-                print("Delete Student")
+                print(f"{color4}Deleting Student{Style.reset}")
                 delete_student(students, classrooms)
             elif student_choice == "3":
                 print(f"\n{color3}Students list{Style.reset}") 
