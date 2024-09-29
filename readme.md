@@ -42,7 +42,10 @@ This is a terminal-based command-line interface (CLI) application created to man
       -  [Choice 5 - Save Changes and Return to the Main Menu](#choice-5---save-changes-and-return-to-the-main-menu)  
    - [Option 3 - Exit](#option-3---exit)  
 
-3. [Testing](#testing)
+3. [Application Testing](#application-testing)
+    - [Test for adding kitchen menu](#test-for-adding-a-kitchen-menu-test_add_menu_for_day)
+    - [Test for adding a student](#test-for-adding-a-student-test_add_student)
+    - [Running all tests at once](#run-all-tests-at-once)  
 
 
 ## Application Setup
@@ -353,4 +356,37 @@ Upon exiting the application, you will receive a thank you and see you again soo
 
 ---
 
-## Testing
+## Application Testing
+
+This application uses **Pytest** as the testing framework to verify its functionality. Below is an overview of the two tests of its main features included:
+
+1. ### Test for Adding a Kitchen Menu (test_add_menu_for_day):  
+
+This test checks the functionality of adding a menu for a specific week and day in the kitchen. It:
+
+- Mocks the user input to simulate adding a breakfast, lunch, and afternoon tea menu for a given week and day.
+- Verifies that the menu was correctly added to the kitchen's internal data structure.
+
+To run this test:
+```bash
+pytest tests/test_kitchen_functions.py
+```
+
+2. ### Test for Adding a Student (test_add_student)  
+
+This test checks the process of adding a student with complete details, including handling of allergies and guardian information. It:
+
+- Mocks the user input to add a student's first name, last name, birthday, allergies, and guardian details. 
+- Ensures that the student is added to the correct classroom based on their age and that all attributes are set as expected.
+
+To run this test:
+```bash
+pytest tests/test_student_functions.py
+```
+
+3. ### Run all tests at once
+
+To run all tests at the same time:
+```bash
+pytest
+```
