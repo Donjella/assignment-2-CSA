@@ -12,7 +12,20 @@ This is a terminal-based command-line interface (CLI) application created to man
       - [Security Impact Overview](#security-impact-overview)  
       - [Important Notes](#important-notes)  
 
-2. [Using the Application](#using-the-application)  
+2. [Application Features](#application-features)
+   - [Student Management Menu](#student-management-menu)
+     - [Add Student](#add-student)
+     - [Delete Student](#delete-student)
+     - [List Students](#list-students)
+     - [Display Parent/Guardian details](#display-parentguardian-details)
+    - [Kitchen Management Menu](#kitchen-management-menu)
+      - [Add/Update Menu for the Day](#addupdate-menu-for-the-day)
+      - [Delete Menu for the Day](#delete-menu-for-the-day)
+      - [List Menu for the Week](#list-menu-for-the-week)
+      - [List students with allergies](#list-students-with-allergies)
+    - [Data Persistence](#data-persistence)
+    - [Styled Outputs](#styled-outputs)
+3. [Using the Application](#using-the-application)  
    - [Run the Application](#running-the-application)  
    - [Main Menu](#main-menu)  
    - [Option 1 - Student Management Menu](#option-1---student-management-menu)  
@@ -143,8 +156,45 @@ Given these details, even though the application is a command-line interface and
 
 Therefore, while the application currently handles this data safely as an internal use case (for a school project/assisgnment), additional measures should be considered if it is ever scaled to include a wider scope or becomes part of a web-based or distributed system.
 
+## Application Features
 
-## Using the application 
+### Student Management Menu
+
+- #### Add Student:  
+Allows the entry of a student's name, birthdate, allergies, and parent/guardian details. Application automatically assigns student to their classroom based on their birthdate (age calculation)  
+
+Babies Room (0-2 years)  
+Toddlers Room (2-3 years)  
+Kindergarten Room (3-5 years)
+- #### Delete Student:  
+ Remove a student from the system.
+- #### List Students:   
+Display students by their assigned classrooms based on age groups.
+
+- #### Display Parent/Guardian Details:   
+Retrieve and display the parent/guardian information associated with a specific student.
+
+### Kitchen Management Menu
+
+- #### Add/Update Menu for the Day: 
+Input and update meals (breakfast, lunch, and afternoon tea) for specific days of the week.
+    
+- #### Delete Menu for the Day:
+Remove the existing menu entries for a particular day.
+
+- #### List Menu for the Week:   
+View the meal plans for the entire week (Monday to Friday).
+
+- #### List Students with Allergies:
+Display all students who have recorded allergies, along with their classroom assignment and allergy details.
+
+### Data Persistence
+Save and Load Data: Automatically save students and kitchen data to JSON files (students.json and kitchen.json) for persistence across sessions.
+
+### Styled Outputs
+Using PrettyTable and Colored to produce neatly formatted outputs with color-coded messages and tables to enhance user experience.
+
+## Using the application and its features
 ### Run the application
 
 Navigate to the root directory of the project (where main.py is located).

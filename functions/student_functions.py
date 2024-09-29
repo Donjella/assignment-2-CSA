@@ -4,7 +4,7 @@ from classes.students import Student
 from classes.parent_guardian import ParentGuardian  # Import the ParentGuardian class
 from datetime import datetime
 from colored import Style
-from constants import color4, color5
+from constants import color3, color4, color5
 
 def add_student(students, classrooms):
     # Validate first name (fname)
@@ -57,6 +57,7 @@ def add_student(students, classrooms):
             break
         except ValueError:
             print(f"{color5}Invalid date format or date out of range. Please enter valid date in the format YYYY-MM-DD.{Style.reset}")
+        
 
      # Initialize an empty list for allergies
     allergies = []
@@ -228,4 +229,4 @@ def list_guardian_details(students):
         else:
             print(f"Student: {student.full_name} (ID: {student.get_formatted_id()}) has no associated guardian.\n")
     else:
-        print(f"No student found with ID {student_id}.")
+        print(f"\n{color3}No student found with ID {student_id}.{Style.reset}")
