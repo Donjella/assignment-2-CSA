@@ -10,12 +10,13 @@ Users can clone or fork the code of the application from its [GitHub repository]
 
 The application uses both in-built and external libraries:
 
-1. [Colored](https://pypi.org/project/colored/) - For color and formatting CLI outputs.
-2. [Python Random Module](https://docs.python.org/3/library/random.html) - Built-in Python module for generating unique student IDs.
-3. [Python datetime module](https://docs.python.org/3/library/datetime.html) - For date handling and age calculations.
-4. [Pytest](https://docs.pytest.org/en/latest/) - Python testing framework for running unit tests to ensure code quality.
-5. [Pytest Mock](https://pytest-mock.readthedocs.io/en/latest/) - Plugin for using mocker in pytest for mocking input and testing.
-6. [JSON](https://docs.python.org/3/library/json.html) - For reading from and writing to JSON files for student and kitchen data persistence.
+1. [Colored](https://pypi.org/project/colored/)
+2. [PrettyTable](https://pypi.org/project/prettytable/)
+3. [JSON](https://pypi.org/project/colored/)  
+4. [Pytest](https://docs.pytest.org/en/latest/) 
+5. [Pytest Mock](https://pytest-mock.readthedocs.io/en/latest/) 
+6. [Python datetime module](https://docs.python.org/3/library/datetime.html) 
+7. [Python Random Module](https://docs.python.org/3/library/random.html) 
 
 ### Setting Up the Environment
 1. Application is written in **Python Version 3.12.5**. Hence, please ensure you have Python 3.12.5 or later installed.
@@ -39,7 +40,56 @@ pip install -r requirements.txt
 pip install colored
 pip install pytest
 pip install pytest-mock
+pip install prettytable
 ```
+## Third-party software licensing and security
+The application makes use of various third-party software to facilitate its functionality and enhance user experience. 
+
+Below is a comprehensive list of the third-party libraries used, their purposes, licenses, and information on their security impact.
+
+1. ### [Colored](https://pypi.org/project/colored/)  
+  
+  - **Purpose**: to add color and styles to output in the application.
+  - **Licence**: MIT Licence
+  - **Ethical, legal and security impacts**: The library handles terminal output only and does not interact with sensitive data or external systems, ensuring minimal security risk.
+
+2. ### [PrettyTable](https://pypi.org/project/prettytable/)
+  
+  - **Purpose**: PrettyTable is used within the application to create clean, well-formatted tables in this CLI app to display information.
+  - **Licence**: BSD Licence
+  - **Ethical, legal and security impacts**: PrettyTable is a pure table formatting library that poses no security risk as it doesn't process external inputs or handle sensitive data.
+
+3. ### [JSON](https://pypi.org/project/colored/)  
+  
+  - **Purpose**: For reading from and writing to JSON files for student and kitchen data persistence.
+  - **Licence**: Python Software Foundation Licence
+  - **Ethical, legal and security impacts**: JSON is a built-in Python module and is secure for handling data serialization as long as it does not process untrusted input without proper validation.
+
+4. ### [Pytest](https://docs.pytest.org/en/latest/) 
+  
+  - **Purpose**: Python testing framework for running unit tests to ensure code quality.
+  - **Licence**: Python Software Foundation Licence
+  - **Ethical, legal and security impacts**: Pytest is a testing framework used during development and testing phases only. It does not run in production and does not introduce any runtime security vulnerabilities.
+
+5. ### [Pytest Mock](https://pytest-mock.readthedocs.io/en/)
+  
+  - **Purpose**: A plugin for pytest that provides easy mocking functionality to enable isolatation to parts of the application and test components effectively.
+  - **Licence**: Python Software Foundation Licence
+  - **Ethical, legal and security impacts**: Similar to pytest, it has no security impact on the production environment as it is used solely for development and testing.
+
+6. ### [Python datetime module](https://docs.python.org/3/library/datetime.html) 
+
+  - **Purpose**: A built-in Python module for handling dates and times, crucial for student age calculations and its related functionalities within the application.
+  - **Licence**: Python Software Foundation Licence
+  - **Ethical, legal and security impacts**: datetime is a secure module for handling date and time operations and does not introduce any security vulnerabilities.
+
+7. ###  [Python Random Module](https://docs.python.org/3/library/random.html) 
+
+  - **Purpose**: - A built-in Python module used to generate random unique student IDs for students in the application.
+  - **Licence**: Python Software Foundation Licence
+  - **Ethical, legal and security impacts**: The random module is suitable for generating unique IDs within the scope of this application. However, it is not intended for cryptographic purposes or secure applications beyond this context. For example, generating Secure Keys, Tokens or password hashing require high levels of randomness and unpredictability that go beyond what general-purpose modules like random can provide, typically to use in specialized cryptographic libraries.
+
+
 
 ## Using the application 
 ### Running the application
@@ -189,7 +239,7 @@ Ensure you ***see the confirmation prompt in yellow and black*** that changes in
 
 ---
 
-## Option 2 - Exit
+## Option 3 - Exit
 
 Choosing option 3 in the main menu will exit the application itself.
 
@@ -197,4 +247,6 @@ Choosing option 3 in the main menu will exit the application itself.
 
 Upon exiting the application, you will receive a thank you and see you again soon message.
 
-## Test
+---
+
+## Testing
