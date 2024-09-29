@@ -55,7 +55,7 @@ Below is a comprehensive list of the third-party libraries used, their purposes,
 
 2. ### [PrettyTable](https://pypi.org/project/prettytable/)
   
-  - **Purpose**: PrettyTable is used within the application to create clean, well-formatted tables in this CLI app to display information.
+  - **Purpose**: PrettyTable is used within the application to create clean, well-formatted tables in this CLI app to display kitchen and student-related information.
   - **Licence**: BSD Licence
   - **Ethical, legal and security impacts**: PrettyTable is a pure table formatting library that poses no security risk as it doesn't process external inputs or handle sensitive data.
 
@@ -89,6 +89,29 @@ Below is a comprehensive list of the third-party libraries used, their purposes,
   - **Licence**: Python Software Foundation Licence
   - **Ethical, legal and security impacts**: The random module is suitable for generating unique IDs within the scope of this application. However, it is not intended for cryptographic purposes or secure applications beyond this context. For example, generating Secure Keys, Tokens or password hashing require high levels of randomness and unpredictability that go beyond what general-purpose modules like random can provide, typically to use in specialized cryptographic libraries.
 
+### License Compatibility
+All third-party libraries used are under permissive licenses such as MIT, BSD, and Python Software Foundation License. These licenses are compatible with each other and permit usage, modification, and distribution of the code without conflict. This ensures the application adheres to open-source principles without any licensing issues.
+
+### Security Impact Overview
+All third-party software used in this application has been chosen for their reliability and security. Most of the libraries either handle formatting (like colored, PrettyTable) or are used in a development/testing context (pytest, pytest-mock). The Python built-in libraries (datetime, random, json) are secure when used appropriately and do not introduce any security vulnerabilities into the application when handling trusted data.
+
+### Important Notes
+
+Handling student and parent/guardian information is generally considered sensitive*, especially when it includes:
+
+***Personal Identifiable Information***: This includes student names, ages, birthdays, addresses, and parent/guardian contact details (phone numbers and email addresses).  
+***Health Information***: Information such as allergies or medical conditions, which is also considered sensitive data under many privacy laws.
+
+([*Privacy law in Australia](https://hallandwilcox.com.au/news/overview-of-privacy-law-in-australia/) - ‘Sensitive information’ is defined under the Privacy Act and includes information about an individual’s racial or ethnic origin, political opinions, professional or political or religious affiliations or memberships, sexual orientation or practices, criminal record, health, genetics and/or biometrics.  
+
+Given these details, even though the application is a command-line interface and does not interact with external systems, proper care should be taken to ensure that the information stored securely:
+ 
+ - Make sure JSON files or any storage mechanisms are not accessible to unauthorized users.
+ - Minimized Access: Access to this sensitive data should be limited to authorized individuals who need it for legitimate purposes.
+ - No Unauthorized Sharing: Ensure the data is not accidentally shared, published, or exposed outside the application environment. 
+ - Data Protection Considerations: Properly handle user inputs to avoid any unintended processing, ensure no data leaks, and avoid unnecessary data retention.
+
+Therefore, while the application currently handles this data safely as an internal use case (for a school project/assisgnment), additional measures should be considered if it is ever scaled to include a wider scope or becomes part of a web-based or distributed system.
 
 
 ## Using the application 
