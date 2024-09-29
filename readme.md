@@ -197,6 +197,9 @@ Save and Load Data: Automatically save students and kitchen data to JSON files (
 ### Styled Outputs
 Using PrettyTable and Colored to produce neatly formatted outputs with color-coded messages and tables to enhance user experience.
 
+### Error Handling and Input Validation
+Robust error handling ensures that user input is validated at each step, enabling the application to gracefully handle various categories of errors, including Standard Errors, System-Related Errors, and User-Defined Errors. This comprehensive approach prevents incorrect data entry for critical details such as names, dates, allergies, and contact information, thereby enhancing the application's reliability and user experience.
+
 ## Using the application and its features
 ### Run the application
 
@@ -374,7 +377,7 @@ pytest tests/test_kitchen_functions.py
 
 2. ### Test for Adding a Student (test_add_student)  
 
-This test checks the process of adding a student with complete details, including handling of allergies and guardian information. It:
+In addition to extensive manual testing on all functions in this application, this test specifically checks the process of adding a student with complete details, including the handling of allergies and guardian information
 
 - Mocks the user input to add a student's first name, last name, birthday, allergies, and guardian details. 
 - Ensures that the student is added to the correct classroom based on their age and that all attributes are set as expected.
