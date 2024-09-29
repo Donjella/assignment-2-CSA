@@ -137,15 +137,15 @@ Choosing option 2 will lead you to the kitchen Management Menu
 You will be prompted one question at a time asking for the following input:
 
 - Enter week number: Enter a number (inclusive of) between 1 to 52 to indicate which week of the year to add menu to.
-
 - Enter the day of the week: Enter number only. i.e. (1 = Monday, 2 = Tuesday...5 = Friday)
 Once successful, you will be prompted for:
-
 - Enter name of breakfast dish:
 - Enter name of lunch dish:
 - Enter name of afternoon tea dish:   
 
-Upon successfully entering the information above, you will receive a confirmation stating menu for selected day in selected week is UPDATED.
+![screenshot for display add/update kitchen menu](docs/screenshots/add_kitchen.png)
+
+Upon successfully entering the information above, you will receive a confirmation stating menu for selected day in selected week is updated.
 
 ### Choice 2 - Delete menu for the day
 

@@ -1,5 +1,5 @@
 from colored import Style
-from constants import color5
+from constants import color3, color4, color5
 
 def add_menu_for_day(kitchen):
     """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
@@ -27,7 +27,7 @@ def add_menu_for_day(kitchen):
             raise ValueError(f"{color5}Please enter a number between 1 and 5 (weekdays only).{Style.reset}\n")
         day = day_map[day]
 
-        print(f"Adding menu for Week {week}, Day: {day}")
+        print(f"\n{color4}Adding/updating menu for Week {week}, Day: {day}{Style.reset}\n")
 
     except ValueError as error:
         print(f"{color5}{error}{Style.reset}")
@@ -65,7 +65,7 @@ def add_menu_for_day(kitchen):
     kitchen.menu[week_str][day]["Lunch"] = lunch
     kitchen.menu[week_str][day]["Afternoon Tea"] = afternoon_tea
 
-    print(f"Menu for {day} in Week {week} has been updated.\n")
+    print(f"\n{color3}Menu for {day} in Week {week} has been updated.{Style.reset}")
 
 def list_menu_for_week(kitchen):
     try:

@@ -42,5 +42,18 @@
             "contact_number": "0401163571",
             "contact_email": "brooke@gmail.com"
         }
+    },
+    {
+        "student_id": 7,
+        "fname": "Phil",
+        "lname": "Foden",
+        "birthday": "2023-01-22",
+        "allergies": [],
+        "guardian": {
+            "fname": "Mark",
+            "lname": "Saka",
+            "contact_number": "0403211234",
+            "contact_email": "saka@outlook.com"
+        }
     }
 ]

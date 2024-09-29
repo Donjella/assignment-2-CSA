@@ -11,14 +11,14 @@
             "Afternoon Tea": "Girl"
         },
         "Wednesday": {
-            "Breakfast": null,
-            "Lunch": null,
-            "Afternoon Tea": null
+            "Breakfast": "Vegemite Toast",
+            "Lunch": "Carbonara Pasta",
+            "Afternoon Tea": "Fruit Platter"
         },
         "Thursday": {
-            "Breakfast": null,
-            "Lunch": null,
-            "Afternoon Tea": null
+            "Breakfast": "Muffins",
+            "Lunch": "Fish And Chips",
+            "Afternoon Tea": "Ice Cream"
         },
         "Friday": {
             "Breakfast": null,
