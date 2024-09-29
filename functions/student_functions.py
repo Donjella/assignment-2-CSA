@@ -13,12 +13,12 @@ def add_student(students, classrooms):
             fname = input("Enter student's first name: ").strip().capitalize()
             # Check for consecutive hyphens first
             if '--' in fname:
-                raise ValueError("First name cannot contain consecutive hyphens ('--').")
+                raise ValueError(f"{color5}First name cannot contain consecutive hyphens ('--').{Style.reset}")
             # Allow alphabets and hyphens only
             elif fname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
-                raise ValueError("First name should only contain alphabets. Hyphens ('-') are allowed.")
+                raise ValueError(f"{color5}First name should only contain alphabets. Hyphens ('-') are allowed.{Style.reset}")
         except ValueError as e:
             print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
