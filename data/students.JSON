@@ -118,5 +118,21 @@
             "contact_number": "0405677932",
             "contact_email": "michelle2@outlook.com"
         }
+    },
+    {
+        "student_id": 54,
+        "fname": "Kylian",
+        "lname": "Mbappe",
+        "birthday": "2023-12-25",
+        "allergies": [
+            "Milk",
+            "Prawns"
+        ],
+        "guardian": {
+            "fname": "Wilfried",
+            "lname": "Mbappe",
+            "contact_number": "0401235691",
+            "contact_email": "wilfried@hotmail.com"
+        }
     }
 ]

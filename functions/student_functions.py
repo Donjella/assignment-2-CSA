@@ -112,15 +112,15 @@ def add_student(students, classrooms):
     # Validate guardian first name and last name
     while True:
         try:
-            guardian_fname = input("Enter guardian's first name: ").strip().capitalize()
+            guardian_fname = input("Enter parent/guardian's first name: ").strip().capitalize()
             # Check for consecutive hyphens
             if '--' in guardian_fname:
-                raise ValueError("Guardian's first name cannot contain consecutive hyphens ('--').")
+                raise ValueError("Parent/guardian's first name cannot contain consecutive hyphens ('--').")
             # Allow alphabets and hyphens only
             elif guardian_fname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
-                raise ValueError("Guardian's first name should only contain alphabets. Hyphens ('-') are allowed.")
+                raise ValueError("Parent/guardian's first name should only contain alphabets. Hyphens ('-') are allowed.")
         except ValueError as e:
             print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
@@ -130,15 +130,15 @@ def add_student(students, classrooms):
 # Validate guardian last name
     while True:
         try:
-            guardian_lname = input("Enter guardian's last name: ").strip().capitalize()
+            guardian_lname = input("Enter parent/guardian's last name: ").strip().capitalize()
             # Check for consecutive hyphens
             if '--' in guardian_lname:
-                raise ValueError(f"{color5}Guardian's last name cannot contain consecutive hyphens ('--').{Style.reset}")
+                raise ValueError(f"{color5}Parent/guardian's last name cannot contain consecutive hyphens ('--').{Style.reset}")
             # Allow alphabets and hyphens only
             elif guardian_lname.replace('-', '').isalpha():
                 break  # Valid input, exit loop
             else:
-                raise ValueError(f"{color5}Guardian's last name should only contain alphabets. Hyphens ('-') are allowed.{Style.reset}")
+                raise ValueError(f"{color5}Parent/guardian's last name should only contain alphabets. Hyphens ('-') are allowed.{Style.reset}")
         except ValueError as e:
             print(f"{color5}{e}{Style.reset}")
         except (KeyboardInterrupt, EOFError):
@@ -148,7 +148,7 @@ def add_student(students, classrooms):
     # Validate emergency contact number (should contain only digits and check length)
     while True:
         try:
-            contact_number = input("Enter guardian's contact number (numbers only): ").strip()
+            contact_number = input("Enter parent/guardian's contact number (numbers only): ").strip()
             # Check if it's a valid 10-digit Australian number
             if contact_number.isdigit() and len(contact_number) == 10 and (contact_number.startswith('04') or contact_number.startswith('0')):
                 break  # Valid input, exit loop
@@ -162,7 +162,7 @@ def add_student(students, classrooms):
     # Validate emergency contact email
     while True:
         try:
-            contact_email = input("Enter guardian's contact email: ").strip()
+            contact_email = input("Enter parent/guardian's contact email: ").strip()
             
             # Check for spaces
             if " " in contact_email:
