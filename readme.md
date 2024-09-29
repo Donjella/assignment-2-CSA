@@ -25,6 +25,7 @@ This is a terminal-based command-line interface (CLI) application created to man
       - [List students with allergies](#list-students-with-allergies)
     - [Data Persistence](#data-persistence)
     - [Styled Outputs](#styled-outputs)
+    - [Error Handling and Input Validation](#error-handling-and-input-validation)
 3. [Using the Application](#using-the-application)  
    - [Run the Application](#running-the-application)  
    - [Main Menu](#main-menu)  
