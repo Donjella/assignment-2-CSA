@@ -95,7 +95,7 @@ def delete_student(students, classrooms):
     # Remove the student from the classroom they are assigned to
     if classroom_to_delete_from:
         classroom_to_delete_from.students.remove(student_to_delete)
-        print(f"\n{color3}{student_to_delete.full_name} removed from {classroom_to_delete_from.get_name()}{Style.reset}.")
+        print(f"\n{color3}{student_to_delete.full_name} removed from {classroom_to_delete_from.get_name()}.{Style.reset}")
 
     # Remove the student from the global students list
     students.remove(student_to_delete)
