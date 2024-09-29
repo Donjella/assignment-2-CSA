@@ -1,6 +1,7 @@
 from classes.person import Person  # Import the Person class to use the static method
 from constants import color3, color4, color5
-from colored import Style
+from prettytable import PrettyTable
+from colored import Style, stylize, attr, fg
 
 def assign_student(classrooms, student, silent=False):
     """Try to assign a student to a valid classroom based on age."""
@@ -42,15 +43,39 @@ def assign_student(classrooms, student, silent=False):
 
 
 def list_students_by_classroom(classrooms):
-    for classroom in classrooms:  # Loop through each classroom
+    for classroom in classrooms:
         if classroom.students:  # Check if the classroom has any students
-            print(f"\n{color4}Students in {classroom.get_name()}{Style.reset}:")
+            # Initialize the table for the specific classroom
+            table = PrettyTable()
+
+            # Bold and style headers
+            header_color = fg("blue") + attr("bold")
+            header_student_name_id = stylize("Student Name (Student ID)", header_color)
+            header_age = stylize("Age", header_color)
+
+            # Apply green color for table lines
+            table.horizontal_char = stylize("-", fg("spring_green_4"))
+            table.junction_char = stylize("+", fg("spring_green_4"))
+            table.vertical_char = stylize("|", fg("spring_green_4"))
+
+            table.field_names = [header_student_name_id, header_age]
+
             for student in classroom.students:  # Loop through each student in the classroom
                 age = student.calculate_age()
                 formatted_age = Person.age_in_years_and_months(age)  # Use the static method from Person class
-                print(f"{student.full_name}, {formatted_age} with student ID {student.get_formatted_id()}")
+                name_id = f"{student.full_name} (ID: {student.get_formatted_id()})"
+
+                # Add row to the table
+                table.add_row([name_id, formatted_age])
+
+            # Print the table for the current classroom
+            print(f"\n{color3}Students in {classroom.get_name()}:{Style.reset}")
+            print(table)
         else:
+            # If no students in the classroom, print a message
             print(f"\n{color4}No students in {classroom.get_name()}.{Style.reset}")
+
+
 
 def count_total_students(classrooms):
     """Count the total number of students and print it."""

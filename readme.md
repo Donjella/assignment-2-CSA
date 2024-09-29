@@ -48,8 +48,9 @@ The application uses both in-built and external libraries:
 More information on their licensing, security and compatibility impact can be viewed in the Third-party software licensing and security section.
 
 ### Setting Up the Environment
-1. Application is written in **Python Version 3.12.5**. Hence, please ensure you have Python 3.12.5 or later installed.
-2. Install dependencies using a virtual environment.  
+ ***Note*** :The application is developed and tested on Python 3.12.5 and is confirmed to work on Unix-like systems (specifically macOS). Compatibility on other operating systems is not guaranteed. Below are the instructions for setting up the environment on macOS; please adjust as needed for your system.
+
+1. Install dependencies using a virtual environment.  
 
 ```bash
 # to set up virtual environment
@@ -58,8 +59,8 @@ python3 -m venv .venv
 # activate virtual environment
 source .venv/bin/activate
 ```
-3. Create a .gitignore file and add .venv to avoid pushing the virtual environment packages to the GitHub repository.
-4. **requirements.txt** file is included in the application's [GitHub repository](https://github.com/Donjella/assignment-2-CSA). Hence, users can quickly install project dependencies once the virtual environment is active.  
+2. Create a .gitignore file and add .venv to avoid pushing the virtual environment packages to the GitHub repository.
+3. **requirements.txt** file is included in the application's [GitHub repository](https://github.com/Donjella/assignment-2-CSA). Hence, users can quickly install project dependencies once the virtual environment is active.  
 
 ```bash
 # Install dependencies from requirements.txt.
@@ -131,7 +132,7 @@ Handling student and parent/guardian information is generally considered sensiti
 ***Personal Identifiable Information***: This includes student names, ages, birthdays, and parent/guardian contact details (phone numbers and email addresses).  
 ***Health Information***: Information such as allergies or medical conditions, which is also considered sensitive data under many privacy laws.
 
-([*Privacy law in Australia](https://hallandwilcox.com.au/news/overview-of-privacy-law-in-australia/) - ‘Sensitive information’ is defined under the Privacy Act and includes information about an individual’s racial or ethnic origin, political opinions, professional or political or religious affiliations or memberships, sexual orientation or practices, criminal record, health, genetics and/or biometrics.  
+[*Privacy law in Australia](https://hallandwilcox.com.au/news/overview-of-privacy-law-in-australia/) - ‘Sensitive information’ is defined under the Privacy Act and includes information about an individual’s racial or ethnic origin, political opinions, professional or political or religious affiliations or memberships, sexual orientation or practices, criminal record, health, genetics and/or biometrics.  
 
 Given these details, even though the application is a command-line interface and does not interact with external systems, proper care should be taken to ensure that the information stored securely:
  
@@ -190,6 +191,7 @@ You will be prompted one question at a time asking for the following input:
 ![screenshot for add student](docs/screenshots/assign_student.png)
 
 Upon successfully entering all details above, you will be greeted with a confirmation message in yellow with black background that student is assigned to his/her respective classroom base on his/her age.
+
 ### Choice 2 - Delete Student
 
 You will be prompted to enter student ID of student to be deleted:
@@ -202,7 +204,7 @@ Upon entering a valid (existing student ID associated with a student enrolled in
 
 ### Choice 3 - List Students
 
-A lists of student categorised in their respective classrooms (Babies, Toddlers and Kindergarten) will be printed with their first and last names, age and student ID. Total number of students enrolled in the childcare service will also be shown.
+3 separate tables will be printed showing student name, ID, age containing in their respective classroom(Individual classroom is contained in each table)
 
 ![screenshot for list students](docs/screenshots/list_students.png)
 
