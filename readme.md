@@ -156,7 +156,7 @@ You will be prompted one question at a time asking for the following input:
 
 ![screenshot for delete students](docs/screenshots/delete_kitchen.png)
 
-Successfully entering the information above, you will receive a confirmation stating menu for selected day in selected week is DELETED.
+Upon successfully entering the information above, you will receive a confirmation stating that the menu for selected day in selected week has been deleted.
 
 ### Choice 3 - List menu for the week
       
@@ -172,8 +172,12 @@ A list of students will allergies will be printed.
 
 ### Choice 5 - Save changes and return to the main menu**
 
-### Important: 
-***To successfully save changes*** made to the Kitchen Menu (add/update/delete) so that it will load the changes when you exit the kitchen management menu or start the application again, ***you have to choose option 5 - save changes and return to the main menu***.
+### Important:
+***To successfully save changes*** made to the kitchen menu (add/update/delete) so that it will load the changes when you exit the kitchen management menu or start the application again, ***you have to choose option 5 - save changes and return to the main menu***.  
+
+![screenshot for display save kitchen menu](docs/screenshots/save_kitchen_menu.png)
+
+Ensure you ***see the confirmation prompt in yellow and black*** that changes in the kitchen menu is successfully saved to confirm you have exited the kitchen management menu and changes are saved.
 
 ---
 
