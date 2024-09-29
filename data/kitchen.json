@@ -6,14 +6,14 @@
             "Afternoon Tea": null
         },
         "Tuesday": {
-            "Breakfast": "Ava",
-            "Lunch": "My",
-            "Afternoon Tea": "Girl"
+            "Breakfast": "Avocado Toast",
+            "Lunch": "Ham Sandwich",
+            "Afternoon Tea": "Apple Pie"
         },
         "Wednesday": {
-            "Breakfast": "Vegemite Toast",
-            "Lunch": "Carbonara Pasta",
-            "Afternoon Tea": "Fruit Platter"
+            "Breakfast": "Cereal With Milk",
+            "Lunch": "Bangers And Mash",
+            "Afternoon Tea": "Veggie Sticks"
         },
         "Thursday": {
             "Breakfast": "Muffins",
@@ -38,9 +38,9 @@
     },
     "2": {
         "Monday": {
-            "Breakfast": null,
-            "Lunch": null,
-            "Afternoon Tea": null
+            "Breakfast": "Hashbrown",
+            "Lunch": "Fish Burger",
+            "Afternoon Tea": "Biscuits"
         },
         "Tuesday": {
             "Breakfast": null,

@@ -151,6 +151,6 @@ def delete_menu_for_day(kitchen):
     
     if week_str in kitchen.menu and day in kitchen.menu[week_str]:
         kitchen.menu[week_str][day] = {"Breakfast": None, "Lunch": None, "Afternoon Tea": None}
-        print(f"Menu for {day} (Week {week}) has been deleted.\n")
+        print(f"\n{color3}Menu for {day} (Week {week}) has been deleted.{Style.reset}")
     else:
-        print(f"No menu found for {day} (Week {week}).\n")
+        print(f"{color3}No menu found for {day} (Week {week}).{Style.reset}\n")

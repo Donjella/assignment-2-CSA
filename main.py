@@ -112,6 +112,7 @@ while choice != "3":  # Main menu loop, "3" is exit
             if kitchen_choice == "1":
                 add_menu_for_day(kitchen)  # Add/Update Menu for the day
             elif kitchen_choice == "2":
+                print(f"{color4}Deleting Menu for the day{Style.reset}\n")
                 delete_menu_for_day(kitchen)  # Delete menu for the day
             elif kitchen_choice == "3":
                 list_menu_for_week(kitchen)  # List the menu for the week

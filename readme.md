@@ -153,6 +153,9 @@ You will be prompted one question at a time asking for the following input:
 
 - Enter week number: Enter a number (inclusive of) between 1 to 52 to indicate which week of the year to delete menu from. 
 - Enter the day of the week to delete menu from: Enter number only. i.e. (1 = Monday, 2 = Tuesday...5 = Friday)
+
+![screenshot for delete students](docs/screenshots/delete_kitchen.png)
+
 Successfully entering the information above, you will receive a confirmation stating menu for selected day in selected week is DELETED.
 
 ### Choice 3 - List menu for the week
