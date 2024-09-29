@@ -94,6 +94,7 @@ You will be prompted to enter student ID of student to be deleted:
 
 Upon entering a valid (existing student ID associated with a student enrolled in a class), a confirmation of deletion of student will be printed.
 
+![screenshot for delete students](docs/screenshots/delete_student.png)
 
 ### Choice 3 - List Students
 
@@ -108,6 +109,8 @@ You will be prompted to enter student ID to view the particular student's parent
 - Enter the student's student ID to view his/her guardian details:
 
 Upon entering a valid (existing student ID associated with a student enrolled in a class), his/her guardian details (name, contact number and email) will be printed.
+
+![screenshot for display parent/guardian](docs/screenshots/guardian_parent.png)
 
 ### Choice 5 - Save changes and return to the main menu
 
