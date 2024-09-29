@@ -18,8 +18,8 @@ def students():
 def test_add_student(mocker, students, classrooms):
     # Mock 'inputs' for the student details and follows all validation from actual add student_function
     mocker.patch('builtins.input', side_effect=[
-        'Simon',      # First name
-        'Cowell',     # Last name
+        'Kylian',      # First name
+        'Mbappe',     # Last name
         '2023-01-01', # Birthday
         'yes',        # Yes for question asking for any allergies
         'Peanut',     # Input allergy
@@ -37,6 +37,6 @@ def test_add_student(mocker, students, classrooms):
     
     # Check that the student has been added (matching the input above to pass)
     assert len(students) == 1 # test that student is added to students list
-    assert students[0].get_fname() == 'Simon'
+    assert students[0].get_fname() == 'Kylian'
     assert students[0].guardian.get_guardian_contact_email() == 'mary@example.com'
     assert students[0].get_allergies() == ['Peanut', 'Dairy']
