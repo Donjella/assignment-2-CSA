@@ -247,7 +247,7 @@ You will be prompted one question at a time asking for the following input:
 
 ![screenshot for add student](docs/screenshots/assign_student.png)
 
-Upon successfully entering all details above, you will be greeted with a confirmation message in yellow with black background that student is assigned to his/her respective classroom base on his/her age.
+Upon successfully entering all details above, you will be greeted with a confirmation message in yellow with black background that student is assigned to his/her respective classroom based on his/her age.
 
 ### Choice 2 - Delete Student
 
@@ -261,7 +261,7 @@ Upon entering a valid (existing student ID associated with a student enrolled in
 
 ### Choice 3 - List Students
 
-3 separate tables for 3 individual classrooms will be printed showing students enrolled in their respective classrooms with the student's name, ID, and age shown in the table.
+3 separate tables for 3 individual classrooms will be printed, displaying students enrolled in their respective classrooms with the student's name, ID, and age shown in the table.
 
 ![screenshot for list students](docs/screenshots/list_students.png)
 
@@ -362,7 +362,7 @@ Upon exiting the application, you will receive a thank you and see you again soo
 
 ## Application Testing
 
-This application uses **Pytest** as the testing framework to verify its functionality. Below is an overview of the two tests of its main features included:
+In addition to extensive manual testing on all functions in this application, this application uses **Pytest** as the testing framework to verify its functionality. Below is an overview of the two tests of its main features included:
 
 1. ### Test for Adding a Kitchen Menu (test_add_menu_for_day):  
 
@@ -378,7 +378,7 @@ pytest tests/test_kitchen_functions.py
 
 2. ### Test for Adding a Student (test_add_student)  
 
-In addition to extensive manual testing on all functions in this application, this test specifically checks the process of adding a student with complete details, including the handling of allergies and guardian information
+This test specifically checks the process of adding a student with complete details, including the handling of allergies and guardian information
 
 - Mocks the user input to add a student's first name, last name, birthday, allergies, and guardian details. 
 - Ensures that the student is added to the correct classroom based on their age and that all attributes are set as expected.
