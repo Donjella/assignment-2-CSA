@@ -41,7 +41,6 @@ pip install pytest
 pip install pytest-mock
 ```
 
-
 ## Using the application 
 ### Running the application
 
@@ -57,6 +56,8 @@ Once application starts, you will be greeted with a welcome message, 2 managemen
 2. Kitchen
 3. Exit
 
+![screenshot for application main menu](docs/screenshots/main_menu.png)
+
 ### Option 1 - Student Management Menu
 Choosing option 1 will lead you to the Student Management Menu
 
@@ -65,6 +66,8 @@ Choosing option 1 will lead you to the Student Management Menu
 3. List Students
 4. Display Parent/Guardian Details
 5. Save changes or/and return to the main menu
+
+![screenshot for student management menu](docs/screenshots/student_menu.png)
 
 ### Choice 1 - Add Student
 
@@ -80,12 +83,11 @@ You will be prompted one question at a time asking for the following input:
 - Enter guardian's first name:
 - Enter guardian's last name:
 - Enter guardian's contact number: 
-- Enter guardian's email address:
-
-Upon successfully entering all details above, you will be greeted with a confirmation message in yellow with black background that student is assigned to his/her respective classroom base on his/her age.
+- Enter guardian's email address:  
 
 ![screenshot for add student](docs/screenshots/assign_student.png)
 
+Upon successfully entering all details above, you will be greeted with a confirmation message in yellow with black background that student is assigned to his/her respective classroom base on his/her age.
 ### Choice 2 - Delete Student
 
 You will be prompted to enter student ID of student to be deleted:
@@ -132,6 +134,8 @@ Choosing option 2 will lead you to the kitchen Management Menu
 4. List students with allergies
 5. Save changes or/and return to the main menu
 
+![screenshot for kitchen management menu](docs/screenshots/kitchen_menu.png)
+
 ### Choice 1 - Add/Update menu for the day
 
 You will be prompted one question at a time asking for the following input:
@@ -164,6 +168,8 @@ You will be prompted one question at a time asking for the following input:
 
 - Enter week number: Enter a number (inclusive of) between 1 to 52 to indicate which week of the year to list menu
 
+![screenshot for list menu for the week](docs/screenshots/weekly_menu.png)
+
 Upon successfully entering the information above, you will be shown the menu (Breakfast, Lunch and Afternoon Tea) for each day of the week.
 
 ### Choice 4 - List student with allergies
@@ -182,5 +188,13 @@ A list of students with allergies will be printed in a table. The list is sorted
 Ensure you ***see the confirmation prompt in yellow and black*** that changes in the kitchen menu is successfully saved to confirm you have exited the kitchen management menu and changes are saved.
 
 ---
+
+## Option 2 - Exit
+
+Choosing option 3 in the main menu will exit the application itself.
+
+![screenshot for exit application message](docs/screenshots/exit_message.png)
+
+Upon exiting the application, you will receive a thank you and see you again soon message.
 
 ## Test

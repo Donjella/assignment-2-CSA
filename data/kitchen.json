@@ -1,9 +1,9 @@
 {
     "1": {
         "Monday": {
-            "Breakfast": null,
-            "Lunch": null,
-            "Afternoon Tea": null
+            "Breakfast": "Oatmeal",
+            "Lunch": "Pizza",
+            "Afternoon Tea": "Sliced Kiwi"
         },
         "Tuesday": {
             "Breakfast": "Avocado Toast",
@@ -21,9 +21,9 @@
             "Afternoon Tea": "Ice Cream"
         },
         "Friday": {
-            "Breakfast": null,
-            "Lunch": null,
-            "Afternoon Tea": null
+            "Breakfast": "Fruit Salad With Yoghurt",
+            "Lunch": "Marinara Pasta",
+            "Afternoon Tea": "Popcorn"
         },
         "Saturday": {
             "Breakfast": null,

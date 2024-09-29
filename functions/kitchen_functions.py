@@ -1,4 +1,4 @@
-from colored import Style, stylize, fg
+from colored import Style, stylize, attr, fg
 from constants import color3, color4, color5
 from prettytable import PrettyTable
 
@@ -84,25 +84,22 @@ def list_menu_for_week(kitchen):
     week_str = str(week)
 
     if week_str not in kitchen.menu:
-        print(f"No menu found for Week {week}.\n")
+        print(f"{color3}No menu found for Week {week}.{Style.reset}\n")
         return
 
     days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
-    print(f"\n--- Menu for Week {week} ---")
+    print(f"\n{color3}--- Menu for Week {week} ---{Style.reset}")
 
     for day in days_of_week:
         if day in kitchen.menu[week_str]:
             menu_for_day = kitchen.menu[week_str][day]
-            print(f"\nMenu for {day}:")
+            print(f"{color4}\nMenu for {day}:{Style.reset}")
             print(f"  Breakfast: {menu_for_day['Breakfast'] or 'No dishes set.'}")
             print(f"  Lunch: {menu_for_day['Lunch'] or 'No dishes set.'}")
             print(f"  Afternoon Tea: {menu_for_day['Afternoon Tea'] or 'No dishes set.'}")
         else:
             print(f"No menu found for {day}.")
-
-from prettytable import PrettyTable
-from colored import stylize, attr, fg
 
 def list_students_with_allergies(classrooms):
     # Initialize the table
