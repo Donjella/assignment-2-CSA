@@ -1,5 +1,6 @@
-from colored import Style
+from colored import Style, stylize, fg
 from constants import color3, color4, color5
+from prettytable import PrettyTable
 
 def add_menu_for_day(kitchen):
     """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
@@ -100,22 +101,43 @@ def list_menu_for_week(kitchen):
         else:
             print(f"No menu found for {day}.")
 
+from prettytable import PrettyTable
+from colored import stylize, attr, fg
+
 def list_students_with_allergies(classrooms):
-    print(f"\n{color3}Student allergy list{Style.reset}") 
+    # Initialize the table
+    table = PrettyTable()
+
+    # Bold the headers and apply the spring_green_4 color
+    header_color = fg("blue") + attr("bold")
+    header_student_name_id = stylize("Student Name (Student ID)", header_color)
+    header_classroom = stylize("Classroom", header_color)
+    header_allergies = stylize("Allergies", header_color)
+
+    # Apply green color for table lines
+    table.horizontal_char = stylize("-", fg("spring_green_4"))
+    table.junction_char = stylize("+", fg("spring_green_4"))
+    table.vertical_char = stylize("|", fg("spring_green_4"))
     
-    for classroom in classrooms:  # Loop through each classroom
-        # Get students with allergies in the current classroom
-        students_with_allergies = [student for student in classroom.students if student.allergies]
-        
-        if students_with_allergies:  # Check if any students in the classroom have allergies
-            print(f"\n{color4}Classroom: {classroom.get_name()}{Style.reset}")
-            
-            # Loop through each student with allergies and print details
-            for student in students_with_allergies:
+    table.field_names = [header_student_name_id, header_classroom, header_allergies]
+
+    for classroom in classrooms:
+        for student in classroom.students:
+            if student.allergies:  # If student has allergies
                 allergies = ', '.join(student.allergies)
-                print(f"  {student.full_name} (Student ID: {student.get_formatted_id()}) has the following allergies: {allergies}")
-        else:
-            print(f"\n{color4}No students with allergies in {classroom.get_name()}.{Style.reset}")
+                name_id = f"{student.full_name} (ID: {student.get_formatted_id()})"
+                
+                # Add row to the table
+                table.add_row([name_id, classroom.get_name(), allergies])
+
+
+    # Check if the table has any rows
+    if len(table.rows) == 0:
+        print("No students with allergies.\n")
+    else:
+        print(f"\n{color3}Students with allergies:{Style.reset}")
+        print(table)
+
 
 def delete_menu_for_day(kitchen):
     try:

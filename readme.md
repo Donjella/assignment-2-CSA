@@ -168,7 +168,9 @@ Upon successfully entering the information above, you will be shown the menu (Br
 
 ### Choice 4 - List student with allergies
       
-A list of students with allergies will be printed.
+A list of students with allergies will be printed in a table. The list is sorted by the student's classrooms, i.e. students are grouped together by their classrooms.
+
+![screenshot for list of student allergies](docs/screenshots/student_allergy.png)
 
 ### Choice 5 - Save changes and return to the main menu**
 

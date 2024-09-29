@@ -57,5 +57,66 @@
             "contact_number": "0401234569",
             "contact_email": "michelle@gmail.com"
         }
+    },
+    {
+        "student_id": 74,
+        "fname": "Phil",
+        "lname": "Foden",
+        "birthday": "2022-06-23",
+        "allergies": [
+            "Shellfish"
+        ],
+        "guardian": {
+            "fname": "Judy",
+            "lname": "Foden",
+            "contact_number": "0435678843",
+            "contact_email": "judy@outlook.com"
+        }
+    },
+    {
+        "student_id": 47,
+        "fname": "Kyle",
+        "lname": "Walker",
+        "birthday": "2020-07-22",
+        "allergies": [
+            "Gluten",
+            "Fish"
+        ],
+        "guardian": {
+            "fname": "Emma",
+            "lname": "Walker",
+            "contact_number": "0403675897",
+            "contact_email": "emma@outlook.com"
+        }
+    },
+    {
+        "student_id": 6,
+        "fname": "Cole",
+        "lname": "Palmer",
+        "birthday": "2024-03-10",
+        "allergies": [
+            "Soy"
+        ],
+        "guardian": {
+            "fname": "Mariah",
+            "lname": "Stones",
+            "contact_number": "0403234567",
+            "contact_email": "mariah@gmail.com"
+        }
+    },
+    {
+        "student_id": 84,
+        "fname": "Mia",
+        "lname": "Hamm",
+        "birthday": "2020-08-27",
+        "allergies": [
+            "Dairy"
+        ],
+        "guardian": {
+            "fname": "Michelle",
+            "lname": "Hamm",
+            "contact_number": "0405677932",
+            "contact_email": "michelle2@outlook.com"
+        }
     }
 ]
