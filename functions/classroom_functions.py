@@ -1,11 +1,30 @@
-from classes.person import Person  # Import the Person class to use the static method
-from constants import color3, color4, color5
-from prettytable import PrettyTable
-from colored import Style, stylize, attr, fg
+from prettytable import PrettyTable  # External library used to display tabular data. E.g. list students by classrooms in individual tables
+from colored import Style, stylize, attr, fg  # External library for colored text styling.
+
+from classes.person import Person  # Import the Person class for shared methods like age formatting.
+from constants import color3, color4, color5  # Imported constants for consistent colored output.
 
 def assign_student(classrooms, student, silent=False):
-    """Try to assign a student to a valid classroom based on age."""
-    age = student.calculate_age()
+    # Assign a student to a valid classroom based on their age.
+
+    # Purpose:
+    #   Loops through available classrooms to find a match for the student's age range.
+    #   If a match is found, the student is assigned to the classroom.
+    #   If no match is found, the student's details are cleared.
+
+    # Arguments:
+    #   classrooms (list): A list of Classroom instances.
+    #   student (Student): The student instance to be assigned.
+    #   silent (bool, optional): silent argument in the assign_student function suppresses the output messages 
+    #   and help not to assign student id again when it loads from load_students function in file_functions.py
+    #   that inform about the success or failure of assigning a student to a classroom. Default is False.
+
+    # Example Usage:
+    #   assign_student(classrooms, student)
+    #   Assigns the student to a classroom based on their age.
+
+    age = student.calculate_age() # Calculate the student's age in years, including fractional months, using the `calculate_age` method from the Person class.
+
     
     # Initialize to track if the student is assigned
     assigned = False
@@ -16,18 +35,16 @@ def assign_student(classrooms, student, silent=False):
             classroom.students.append(student)  # Add the student to the classroom's student list
             student.assign_classroom(classroom)  # Assign the classroom to the student
             assigned = True
-            
-            # Remove this line, as student_id should not be generated again
-            # student.student_id = student.generate_unique_id()  
-
+            # If silent mode is not enabled, provide user feedback with output below
             if not silent:
+                # Format the student's age as a user-friendly string (e.g., "3 years and 2 months old")
                 formatted_age = Person.age_in_years_and_months(age)
                 print(f"\n{color3}{student.full_name} (Student ID: {student.get_formatted_id()}) is {formatted_age} and is assigned to {classroom.name}.{Style.reset}")
             
             break  # Exit the loop once the student is assigned
 
     if not assigned:
-        # Clear individual attributes
+        # Clear student details if no classroom is suitable
         student.fname = None
         student.lname = None
         student.birthday = None
@@ -43,12 +60,17 @@ def assign_student(classrooms, student, silent=False):
 
 
 def list_students_by_classroom(classrooms):
+    # Display a list of students for each classroom in a tabular format.
+    # Purpose: Iterates through classrooms and lists enrolled students, including their full names, IDs, and formatted ages.
+    # Arguments: classrooms (list): A list of Classroom instances.
+
+    # Example: list_students_by_classroom(classrooms) results in the output of tables of students grouped by classroom.
     for classroom in classrooms:
         if classroom.students:  # Check if the classroom has any students
             # Initialize the table for the specific classroom
             table = PrettyTable()
 
-            # Bold and style headers
+            # Bold and style headers for table
             header_color = fg("blue") + attr("bold")
             header_student_name_id = stylize("Student Name (Student ID)", header_color)
             header_age = stylize("Age", header_color)
@@ -76,15 +98,23 @@ def list_students_by_classroom(classrooms):
             print(f"\n{color4}No students in {classroom.get_name()}.{Style.reset}")
 
 
-
 def count_total_students(classrooms):
-    """Count the total number of students and print it."""
+    # Count and print the total number of students across all classrooms.
+    # Purpose: Calculates and displays the total number of enrolled students.
+    # Arguments: classrooms (list): A list of Classroom instances.
+
+    # Output will print the total number of students in the childcare across all classrooms.
     total_students = sum(len(classroom.students) for classroom in classrooms)
     print(f"\n{color3}Total number of students: {total_students}{Style.reset}")  
 
 
 def delete_student(students, classrooms):
-    """Delete a student by their student_id, handling input and exceptions internally."""
+    # Delete a student by their student ID.
+    # Purpose: Prompts the user for a student ID and removes the corresponding student from their assigned classroom and the global student list.
+
+    # Arguments:
+    #    1. students (list): A list of all Student instances.
+    #    2. classrooms (list): A list of all Classroom instances.
 
     try:
         # Ask for student ID to delete and ensure it's an integer
