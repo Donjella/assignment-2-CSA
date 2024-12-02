@@ -17,6 +17,7 @@ class Classroom:
         # Purpose: Validates whether a student's age falls within the classroom's age range.
         # Arguments: age (int): The student's age.
         # Returns -  bool: True if the age is within the classroom's range, False otherwise.
+
         # Example: if classroom.is_valid_for_age(student.age) -> classroom.students.append(student) 
         # i.e. If the student's age is valid for the classroom, add them to the classroom's list of students.
         return self.min_age <= age < self.max_age
@@ -25,6 +26,7 @@ class Classroom:
         # Retrieve the name of the classroom.
         # Purpose: Provides the name of the classroom for display or reference.
         # Returns - str: The name of the classroom.
+
         # Example: print(classroom.get_name()) -> Output: "Babies Room (0-2 years)
         return self.name
 
@@ -43,6 +45,7 @@ kindergarten_classroom = Classroom("Kindergarten Room(3-5 years)", 3, 5)
 # List of classrooms
 # Purpose: This list contains all classroom instances. 
 # It is used to iterate through classrooms when assigning students or retrieving information about specific classrooms.
+
 # Example Usage - Assign a student to a classroom based on age:
 # for student in students:
 #     for classroom in classrooms:
