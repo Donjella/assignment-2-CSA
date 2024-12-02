@@ -1,12 +1,27 @@
-# functions/student_functions.py
-from functions.classroom_functions import assign_student
-from classes.students import Student
-from classes.parent_guardian import ParentGuardian  # Import the ParentGuardian class
-from datetime import datetime
-from colored import Style
-from constants import color3, color4, color5
+from datetime import datetime  # Import to handle date and age calculations.
+from colored import Style  # Import for styled terminal output.
+
+from constants import color3, color4, color5  # Import predefined color codes for consistent styling.
+from functions.classroom_functions import assign_student  # Import to assign students to classrooms.
+from classes.students import Student  # Import the Student class for creating student instances.
+from classes.parent_guardian import ParentGuardian  # Import the ParentGuardian class for guardian details.
 
 def add_student(students, classrooms):
+    # Add a new student to the system.
+    # Purpose: This function collects validated input from the user to create a new student instance.
+    # It ensures the student is assigned to a classroom based on their age and associates them with a guardian.
+
+    # Example of how it is used:
+    #     1. It Prompts the user for validated input: first name, last name, birthday, allergies, and guardian details.
+    #     2. Validates user input to ensure correctness and consistency together with exception handling.
+    #        Exception handling captures and handles invalid inputs such as valid names (no numbers) and safely exit function if input in interrupted.
+    #     3. Checks the student's age and assigns them to an appropriate classroom.
+    #     4. Adds the student to the global list of students.
+
+    # Arguments:
+    #     students (list): The global list of Student instances to update.
+    #     classrooms (list): The list of Classroom instances used for student assignment.
+
     # Validate first name (fname)
     while True:
         try:
@@ -204,7 +219,19 @@ def add_student(students, classrooms):
     students.append(student)
 
 def list_guardian_details(students):
-    """List parent/guardian details for a specific student by student ID."""
+    #  List parent/guardian details for a specific student by their ID.
+    # Purpose: This function retrieves and displays the guardian's details for a given student ID.
+
+    # Arguments: students (list): The global list of Student instances.
+
+    # Example of how it is used:
+    #     1. It prompts the user to enter a student ID.
+    #     2. It then finds the corresponding student using the ID.
+    #     3. Displays the guardian's full name, contact number, and email by retrieving guardian details for a specific student by ID.
+    #     4. It also includes exception Handling that handles invalid inputs, such as non-numeric student IDs and it
+    #        Provides feedback if no students are enrolled or if no student is found with the entered ID.
+
+    # if no students are enrolled
     if not students:
         print("\nNo parent/guardian details to display as no students enrolled.\n")
         return
@@ -220,7 +247,7 @@ def list_guardian_details(students):
     student = next((student for student in students if student.student_id == student_id), None)
     
     if student:
-        guardian = student.guardian
+        guardian = student.guardian # Retrieve the ParentGuardian instance associated with the student.
         if guardian:
             print(f"\n{color4}Student: {student.full_name} (ID: {student.get_formatted_id()}){Style.reset}")
             print(f"  Guardian Name: {guardian.full_name}")
