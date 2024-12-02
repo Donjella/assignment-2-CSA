@@ -1,9 +1,22 @@
-from colored import Style, stylize, attr, fg
-from constants import color3, color4, color5
-from prettytable import PrettyTable
+from colored import Style, stylize, attr, fg # Library for terminal text styling and colors.
+from prettytable import PrettyTable # Library for creating formatted tables in the terminal, for example, displaying students with allergies in a neat table.
+
+from constants import color3, color4, color5  # Predefined color constants for consistent styling.
 
 def add_menu_for_day(kitchen):
-    """Prompt the user to add or update the menu for breakfast, lunch, and afternoon tea for a specific day."""
+    #  Prompt the user to add or update the menu for a specific day in a given week.
+    # Purpose: It allows the user to set or update dishes for breakfast, lunch, and afternoon tea for a specific day by 
+    # updating the `menu` dictionary in the Kitchen instance.
+    
+    # Arguments: kitchen (Kitchen): The Kitchen instance where the menu will be updated.
+
+    # Example of how it works/is used: 
+    #     1. Prompts the user for the week number and day of the week.
+    #     2. Validates the input for week and day ranges.
+    #     3. Collects dishes input for breakfast, lunch, and afternoon tea.
+    #     4. Updates or creates the menu for the specified week and day.
+    #     5. It also handles invalid inputs for week, day, and dishes and safely exits if input is interrupted (e.g., Ctrl+C or EOFError).
+
     try:
         # Prompt for week number
         week_input = input("Enter the week number (1-52): ").strip()
@@ -54,6 +67,8 @@ def add_menu_for_day(kitchen):
 
     week_str = str(week)
     if week_str not in kitchen.menu:
+        # Check if the specified week exists in the kitchen's menu.
+        # If the week is not present, initialize a new entry in the `menu` dictionary.
         kitchen.menu[week_str] = {
             "Monday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
             "Tuesday": {"Breakfast": None, "Lunch": None, "Afternoon Tea": None},
@@ -69,6 +84,17 @@ def add_menu_for_day(kitchen):
     print(f"\n{color3}Menu for {day} in Week {week} has been updated.{Style.reset}")
 
 def list_menu_for_week(kitchen):
+    # Display the menu for all weekdays in a given week.
+
+    # Purpose: Retrieves and displays the menu for a specified week in a formatted layout.
+
+    # Arguments: kitchen (Kitchen): The Kitchen instance containing the menu to display.
+
+    # Example of how it works/is used: 
+    #     1. Prompts the user for the week number.
+    #     2. Checks if a menu exists for the week.
+    #     3. Displays the menu for each weekday with breakfast, lunch, and afternoon tea.
+    #     4. Exception Handling: Handles invalid week inputs and missing menu data and safely exits if input is interrupted.
     try:
         week = int(input("Enter the week number: "))
     except ValueError:
@@ -102,6 +128,20 @@ def list_menu_for_week(kitchen):
             print(f"No menu found for {day}.")
 
 def list_students_with_allergies(classrooms):
+
+    #  List all students with allergies, displaying their name, classroom, and allergies in a formatted table.
+    # Purpose: It iterates through all classrooms to find students with allergies and displays the student information (name, ID, classroom, and allergies) 
+    # in a color-coded and styled table.
+
+    # Arguments:
+    #     classrooms (list): A list of Classroom instances, each containing a list of students.
+
+    # Example of how it works/is used: 
+    #     1. Initializes a PrettyTable for displaying the information in a tabular format.
+    #     2. Iterates through each classroom and its students to find students with allergies using a nested for loop.
+    #     3. Populates and output the table with relevant student data.
+    #     4. Exception Handling: handles empty tables gracefully by providing a clear message if no students have allergies.
+
     # Initialize the table
     table = PrettyTable()
 
@@ -137,6 +177,23 @@ def list_students_with_allergies(classrooms):
 
 
 def delete_menu_for_day(kitchen):
+    # Delete the menu for a specific day in a given week.
+    # Purpose: This function allows the user to remove the menu for breakfast, lunch, and afternoon tea for a specific day in the specified week.
+    # It is done by updating the `menu` dictionary in the Kitchen instance to clear the menu for the selected day.
+
+    # Arguments:
+    #     kitchen (Kitchen): The Kitchen instance where the menu will be modified.
+
+    # Example of how it works/is used:
+    #     1. Prompts the user for the week number and day of the week.
+    #     2. Validates the inputs to ensure they are within the correct range.
+    #     3. Deletes the menu for the specified day if it exists.
+
+    # Exception Handling:
+    #     - Handles invalid inputs for week and day (e.g., non-numeric values, out-of-range inputs).
+    #     - Provides a clear message if the menu for the specified day and week is not found.
+    #     - Safely exits if input is interrupted (e.g., Ctrl+C or EOFError).
+
     try:
         week = int(input("Enter the week number: "))
     except ValueError:

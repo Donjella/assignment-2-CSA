@@ -10,6 +10,7 @@ class Student(Person):
     # This class extends the Person class to include additional attributes and methods specific to students, 
     # such as student ID generation, classroom assignment, and retrieving guardian information.
     # Methods include __init__, generate_unique_id, and various getter methods.
+
     def __init__(self, fname, lname, birthday, allergies=None, student_id=None):
         # Initializes a Student instance by extending the attributes of the Person class.
         # Purpose: Sets up a student with attributes for name, birthday, allergies, student ID, classroom, and guardian.
@@ -25,6 +26,7 @@ class Student(Person):
         # Example:
         #   student = Student("John", "Doe", "2010-05-15", allergies=["Peanuts"])
         #   print(student.student_id) -> A unique ID (e.g., 42).
+
         super().__init__(fname, lname, birthday, allergies=allergies)
         if student_id is None:
             self.student_id = self.generate_unique_id() # Generate a unique ID if none is provided.
@@ -46,7 +48,8 @@ class Student(Person):
         # Implementation Details:
         #   - IDs are integers between 1 and 100 (adjustable as needed).
         #   - Tracks used IDs with the global set `used_student_ids`.
-        # Check if all IDs in the specified range are used
+        #   - Check if all IDs in the specified range are used
+
         if len(used_student_ids) >= 100:  # Adjust this number to match student's max capacity
             return None
 

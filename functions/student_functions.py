@@ -11,7 +11,7 @@ def add_student(students, classrooms):
     # Purpose: This function collects validated input from the user to create a new student instance.
     # It ensures the student is assigned to a classroom based on their age and associates them with a guardian.
 
-    # Example of how it is used:
+    # Example of how it works/is used:
     #     1. It Prompts the user for validated input: first name, last name, birthday, allergies, and guardian details.
     #     2. Validates user input to ensure correctness and consistency together with exception handling.
     #        Exception handling captures and handles invalid inputs such as valid names (no numbers) and safely exit function if input in interrupted.
@@ -224,7 +224,7 @@ def list_guardian_details(students):
 
     # Arguments: students (list): The global list of Student instances.
 
-    # Example of how it is used:
+    # Example of how it works/is used: 
     #     1. It prompts the user to enter a student ID.
     #     2. It then finds the corresponding student using the ID.
     #     3. Displays the guardian's full name, contact number, and email by retrieving guardian details for a specific student by ID.
