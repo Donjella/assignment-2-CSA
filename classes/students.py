@@ -6,7 +6,7 @@ from classes.person import Person  # Internally importing the Person class for i
 used_student_ids = set()
 
 class Student(Person):
-    # Represents a student with attributes such as name, birthday, allergies, student ID, and classroom.
+    # Represents a student with attributes such as name, birthday, allergies, student ID, and classroom. Like the ParentGuardian class, it inherits from the Person class.
     # This class extends the Person class to include additional attributes and methods specific to students, 
     # such as student ID generation, classroom assignment, and retrieving guardian information.
     # Methods include __init__, generate_unique_id, and various getter methods.

@@ -1,7 +1,7 @@
 from classes.person import Person # Internal importing of the Person class to extend its functionality.
 
 class ParentGuardian(Person):
-    # Represents a parent or guardian associated with a student.
+    # Represents a parent or guardian associated with a student. Like the Student class, it inherits from the Person class.
     # This class extends the Person class to include additional attributes and methods specific to guardians, such as contact number and email address.
     # Methods include __init__, get_guardian_fname, get_guardian_lname, get_guardian_contact_number, and get_guardian_contact_email.
     def __init__(self, fname, lname, contact_number, contact_email):
